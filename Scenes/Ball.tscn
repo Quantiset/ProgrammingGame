@@ -1,15 +1,54 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Ball.png" type="Texture" id=1]
+[ext_resource path="res://Assets/ring_shape.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Ball.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 42.19
 
-[node name="Ball" type="KinematicBody2D"]
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+uniform vec4 line_color : hint_color = vec4(1);
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+
+uniform vec4 obj_color: hint_color = vec4(1.);
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+	outline = min(outline, 1.0);
+	
+	vec4 color = vec4(obj_color.rgb, texture(TEXTURE, UV).a);
+	COLOR = mix(color, line_color, outline - color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/line_color = Color( 0.960784, 0.631373, 0.631373, 1 )
+shader_param/line_thickness = 0.0
+shader_param/obj_color = Color( 0.305882, 0.14902, 0.211765, 1 )
+
+[node name="Ball" type="KinematicBody2D"]
+collision_layer = 3
+input_pickable = true
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 5 )
+scale = Vector2( 0.17, 0.17 )
+texture = ExtResource( 1 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_Ball_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Ball_mouse_exited"]
