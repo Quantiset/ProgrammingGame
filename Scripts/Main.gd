@@ -7,11 +7,9 @@ const MAX_ZOOM = 2
 const MIN_ZOOM = 1
 
 var is_mouse_held := false
+var mouse_start_pos: Vector2
 
 func _input(event):
-	
-	if event.position.x > $CanvasLayer/HSplitContainer/MarginContainer.get_global_rect().position.x:
-		return
 	
 	if event is InputEventMouseButton:
 		match event.button_index:
@@ -21,6 +19,10 @@ func _input(event):
 				$Camera2D.zoom /= ZOOM_MULTIPLICITY
 			BUTTON_LEFT:
 				is_mouse_held = event.is_pressed()
+				mouse_start_pos = event.position
+	
+	if mouse_start_pos.x > $CanvasLayer/HSplitContainer/MarginContainer.get_global_rect().position.x:
+		return
 	
 	if event is InputEventMouseMotion:
 		if is_mouse_held:

@@ -8,12 +8,32 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "CodeNode",
+"language": "GDScript",
+"path": "res://Scripts/CodeNode.gd"
+}, {
+"base": "Line2D",
+"class": "ConnectorLine",
+"language": "GDScript",
+"path": "res://Scripts/ConnectorLine.gd"
+} ]
+_global_script_class_icons={
+"CodeNode": "",
+"ConnectorLine": ""
+}
+
 [application]
 
 config/name="ProgrammingGame"
 run/main_scene="res://Scenes/Main.tscn"
 boot_splash/bg_color=Color( 0.160784, 0.160784, 0.160784, 1 )
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://Scripts/Globals.gd"
 
 [display]
 
