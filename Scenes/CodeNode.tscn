@@ -45,3 +45,10 @@ margin_right = 17.0
 margin_bottom = 180.0
 texture = ExtResource( 3 )
 stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 9.0
+margin_right = 59.0
+margin_bottom = 23.0
+text = "Position"

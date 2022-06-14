@@ -33,7 +33,7 @@ stretch_mode = 2
 [node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer"]
 margin_right = 1920.0
 margin_bottom = 1080.0
-mouse_filter = 2
+mouse_filter = 1
 split_offset = 1500
 
 [node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/HSplitContainer"]
@@ -59,17 +59,27 @@ margin_left = 1512.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 rect_clip_content = true
-mouse_filter = 2
+mouse_filter = 1
 
-[node name="CodePicker" parent="CanvasLayer/HSplitContainer/MarginContainer" instance=ExtResource( 5 )]
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer/HSplitContainer/MarginContainer"]
 margin_right = 408.0
 margin_bottom = 1080.0
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="CodePicker" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport" instance=ExtResource( 5 )]
+margin_left = 1512.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 1
+
+[node name="ColorRect" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/CodePicker" index="0"]
 mouse_filter = 2
 
-[node name="ColorRect" parent="CanvasLayer/HSplitContainer/MarginContainer/CodePicker" index="0"]
-mouse_filter = 2
-
-[node name="TextureRect" parent="CanvasLayer/HSplitContainer/MarginContainer/CodePicker" index="1"]
+[node name="TextureRect" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/CodePicker" index="1"]
 mouse_filter = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -122,4 +132,4 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[editable path="CanvasLayer/HSplitContainer/MarginContainer/CodePicker"]
+[editable path="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/CodePicker"]
