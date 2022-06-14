@@ -32,7 +32,10 @@ func _input(event):
 
 
 func _ready():
-	pass
+	
+	for code_node in get_tree().get_nodes_in_group("CodeNode"):
+		code_node.selected_object = $Block
+	
 
 
 func _process(delta):

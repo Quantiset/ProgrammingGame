@@ -7,22 +7,28 @@ enum Types {
 	Addition
 	Constant
 }
-export (Types) var type setget set_type
+export (Types) var type
 
-onready var arrows := [
-	$OutArrow1,
-	$OutArrow2,
-	$InArrow1, 
-	$InArrow2
-]
+onready var arrows := []
 
 var outgoing_lines := {}
 var incoming_lines := {}
 
+var length := 2 setget set_length
+
+var selected_object
+
 signal moved(by)
 
 func _ready():
+	
+	for child in get_children(): 
+		if "Arrow" in child.name: 
+			arrows.append(child)
+	
 	connect("moved", self, "_moved")
+	set_type(type)
+	
 
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed():
@@ -46,7 +52,7 @@ func _input(event):
 						break
 					
 					# connect these lines
-					print("Connected nodes ", Globals.held_line.original_node, " and ", self)
+					connected_node(Globals.held_line.original_node)
 					Globals.held_line.to_node = self
 					incoming_lines[arrow_index] = Globals.held_line
 					Globals.held_line = null
@@ -87,28 +93,40 @@ func _moved(by: Vector2):
 		line.remove_point(1)
 		line.add_point(og_pos + by * 80)
 
+func set_length(val: int):
+	if arrows.size() > 2:
+		for arrow in arrows.slice(2, arrows.size()-1):
+			arrow.queue_free()
+		arrows.resize(2)
+	
+	length = val
+	for i in range(1, length):
+		var in_arrow = $InArrow1.duplicate()
+		in_arrow.name = in_arrow.name.trim_suffix(in_arrow.name[-1]) + str(i + 1)
+		in_arrow.rect_position.y = 72 + 80 * i
+		add_child(in_arrow)
+		
+		var out_arrow = $OutArrow1.duplicate()
+		out_arrow.name = out_arrow.name.trim_suffix(out_arrow.name[-1]) + str(i + 1)
+		out_arrow.rect_position.y = 72 + 80 * i
+		add_child(out_arrow)
+		
+		arrows.append(in_arrow)
+		arrows.append(out_arrow)
+	
+	$Sprite.rect_size.y = val * 80 + 80
+
+func get_value(arrow_idx: int):
+	return 0
+
 func set_type(val: int):
+	
 	type = val
 	
-	if arrows:
-		for arrow in arrows: arrow.show()
-	$TextEdit.hide()
-	
-	match val:
-		Types.Position:
-			$Label.text = "Position"
-			$Sprite.modulate = Color("541e1e")
-		Types.Addition:
-			$Label.text = "Addition"
-			$Sprite.modulate = Color(0.668902, 0.671875, 0.291321)
-			$OutArrow2.hide()
-		Types.Constant:
-			$Label.text = "Enter Number:"
-			$Sprite.modulate = Color(0.104675, 0.397672, 0.957031)
-			$TextEdit.show()
-			$InArrow1.hide()
-			$InArrow2.hide()
-			$OutArrow2.hide()
+	pass
 
 func delete():
 	queue_free()
+
+func connected_node(with: CodeNode):
+	pass

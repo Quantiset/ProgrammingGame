@@ -33,7 +33,7 @@ func _input(event):
 		if is_mouse_held:
 			$Camera2D.position -= event.relative
 		elif selected_node != null:
-			var _c = (get_local_mouse_position() + event.relative - Vector2(80, 120)).snapped(Vector2(80, 80))
+			var _c = (get_local_mouse_position() + event.relative - Vector2(80, 120)).snapped(Vector2(40, 40))
 			if _c != cached_pos:
 				selected_node.emit_signal("moved", (_c-selected_node.rect_position)/80)
 				selected_node.rect_position = _c

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/TilePlus.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/CodePicker.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxTexture" id=4]
@@ -67,6 +67,7 @@ margin_bottom = 1080.0
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer"]
+size = Vector2( 408, 1080 )
 handle_input_locally = false
 render_target_update_mode = 3
 

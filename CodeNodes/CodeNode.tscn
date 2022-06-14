@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/CodeNode.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Arrow.png" type="Texture" id=3]
 
-[node name="CodeNode" type="Control"]
+[node name="CodeNode" type="Control" groups=["CodeNode"]]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -12,7 +12,10 @@ __meta__ = {
 
 [node name="Sprite" type="TextureRect" parent="."]
 modulate = Color( 0.329412, 0.117647, 0.117647, 1 )
+margin_right = 160.0
+margin_bottom = 240.0
 texture = ExtResource( 1 )
+expand = true
 
 [node name="OutArrow1" type="TextureRect" parent="."]
 margin_left = 142.0
@@ -22,27 +25,11 @@ margin_bottom = 100.0
 texture = ExtResource( 3 )
 stretch_mode = 4
 
-[node name="OutArrow2" type="TextureRect" parent="."]
-margin_left = 142.0
-margin_top = 152.0
-margin_right = 164.0
-margin_bottom = 180.0
-texture = ExtResource( 3 )
-stretch_mode = 4
-
 [node name="InArrow1" type="TextureRect" parent="."]
 margin_left = -4.0
 margin_top = 72.0
 margin_right = 18.0
 margin_bottom = 100.0
-texture = ExtResource( 3 )
-stretch_mode = 4
-
-[node name="InArrow2" type="TextureRect" parent="."]
-margin_left = -5.0
-margin_top = 152.0
-margin_right = 17.0
-margin_bottom = 180.0
 texture = ExtResource( 3 )
 stretch_mode = 4
 
@@ -56,6 +43,10 @@ text = "Position"
 [node name="TextEdit" type="TextEdit" parent="."]
 visible = false
 margin_left = 30.0
-margin_top = 94.0
+margin_top = 59.0
 margin_right = 130.0
-margin_bottom = 150.0
+margin_bottom = 115.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
