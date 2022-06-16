@@ -14,14 +14,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/CodeNode.gd"
 }, {
-"base": "Line2D",
+"base": "Path2D",
 "class": "ConnectorLine",
 "language": "GDScript",
 "path": "res://Scripts/ConnectorLine.gd"
+}, {
+"base": "Path2D",
+"class": "SmoothPath",
+"language": "GDScript",
+"path": "res://Scripts/SmoothPath.gd"
 } ]
 _global_script_class_icons={
 "CodeNode": "",
-"ConnectorLine": ""
+"ConnectorLine": "",
+"SmoothPath": ""
 }
 
 [application]

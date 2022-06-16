@@ -17,6 +17,7 @@ var incoming_lines := {}
 var length := 2 setget set_length
 
 var selected_object
+var has_keyboard_focus := false
 
 signal moved(by)
 
@@ -31,6 +32,7 @@ func _ready():
 	
 
 func _input(event):
+	
 	if event is InputEventMouseButton and event.is_pressed():
 		
 		var touched_arrow := false
@@ -48,12 +50,16 @@ func _input(event):
 				# if player is already holding a line while touching an arrow
 				if Globals.held_line:
 					
+					if arrow_side == "In" and incoming_lines.has(arrow_index):
+						incoming_lines[arrow_index].delete()
+					
 					if arrow_side == "Out":
 						break
 					
 					# connect these lines
 					connected_node(Globals.held_line.original_node)
 					Globals.held_line.to_node = self
+					Globals.held_line.outgoing_arrow_index = arrow_index
 					incoming_lines[arrow_index] = Globals.held_line
 					Globals.held_line = null
 					touched_arrow = true
@@ -61,7 +67,7 @@ func _input(event):
 					# then break and don't create another line
 					break
 				
-				if outgoing_lines.has(arrow_index):
+				if outgoing_lines.has(arrow_index) and outgoing_lines[arrow_index]:
 					outgoing_lines[arrow_index].delete()
 				
 				# create a new line
@@ -69,9 +75,9 @@ func _input(event):
 				add_child(line)
 				line.original_node = self
 				line.position = arrow.rect_position + Vector2(11, 14)
-				line.arrow_index = arrow_index
+				line.incoming_arrow_index = arrow_index
 				line.add_point(Vector2())
-				line.add_point(get_global_mouse_position())
+				line.add_point(get_local_mouse_position())
 				
 				Globals.held_line = line
 				outgoing_lines[arrow_index]=line
@@ -130,3 +136,7 @@ func delete():
 
 func connected_node(with: CodeNode):
 	pass
+
+
+func _on_TextEdit_focus_entered():
+	has_keyboard_focus = true

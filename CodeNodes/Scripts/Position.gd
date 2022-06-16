@@ -2,7 +2,7 @@ extends CodeNode
 
 
 func _input(event):
-	if event is InputEventKey:
+	if event is InputEventKey and event.is_pressed():
 		match event.scancode:
 			KEY_ENTER:
 				if incoming_lines.has(0) and incoming_lines[0].original_node.get_value(0) != null:

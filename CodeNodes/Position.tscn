@@ -22,3 +22,31 @@ margin_right = 18.0
 margin_bottom = 180.0
 texture = ExtResource( 2 )
 stretch_mode = 4
+
+[node name="x1" type="Label" parent="." index="8"]
+margin_left = 14.0
+margin_top = 80.0
+margin_right = 54.0
+margin_bottom = 94.0
+text = "x"
+
+[node name="x2" type="Label" parent="." index="9"]
+margin_left = 138.0
+margin_top = 80.0
+margin_right = 178.0
+margin_bottom = 94.0
+text = "x"
+
+[node name="y1" type="Label" parent="." index="10"]
+margin_left = 15.0
+margin_top = 160.0
+margin_right = 55.0
+margin_bottom = 174.0
+text = "y"
+
+[node name="y2" type="Label" parent="." index="11"]
+margin_left = 138.0
+margin_top = 160.0
+margin_right = 178.0
+margin_bottom = 174.0
+text = "y"

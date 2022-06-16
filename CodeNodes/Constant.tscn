@@ -14,7 +14,7 @@ margin_bottom = 160.0
 visible = false
 
 [node name="Label" parent="." index="3"]
-text = "Enter Number:"
+text = "Constant:"
 
 [node name="TextEdit" parent="." index="4"]
 visible = true
