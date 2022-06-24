@@ -1,4 +1,5 @@
 extends Node2D
+class_name Main
 
 const CAMERA_SPEED = 10
 
@@ -51,3 +52,5 @@ func _process(delta):
 
 func _on_HSplitContainer_unhandled_input(event):
 	_unhandled_input(event)
+
+

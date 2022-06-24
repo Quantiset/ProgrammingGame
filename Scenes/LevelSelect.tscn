@@ -1,0 +1,150 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/LevelSelectIcon.tscn" type="PackedScene" id=1]
+
+[node name="LevelSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 1870.0
+margin_bottom = 1030.0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+margin_right = 1820.0
+margin_bottom = 980.0
+split_offset = 100
+
+[node name="Control" type="CenterContainer" parent="MarginContainer/VSplitContainer"]
+margin_right = 1820.0
+margin_bottom = 100.0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VSplitContainer"]
+margin_top = 112.0
+margin_right = 1820.0
+margin_bottom = 980.0
+color = Color( 0, 0, 0, 0.439216 )
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VSplitContainer"]
+margin_top = 112.0
+margin_right = 1820.0
+margin_bottom = 980.0
+columns = 10
+
+[node name="LevelSelectIcon1" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon2" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 186.0
+margin_right = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon3" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 372.0
+margin_right = 554.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon4" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 558.0
+margin_right = 740.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon5" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 744.0
+margin_right = 926.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon6" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 930.0
+margin_right = 1112.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon7" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 1116.0
+margin_right = 1298.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon8" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 1302.0
+margin_right = 1484.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon9" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 1488.0
+margin_right = 1670.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon10" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 1674.0
+margin_right = 1856.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon11" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_top = 186.0
+margin_bottom = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon12" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 186.0
+margin_top = 186.0
+margin_right = 368.0
+margin_bottom = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon13" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 372.0
+margin_top = 186.0
+margin_right = 554.0
+margin_bottom = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon14" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 558.0
+margin_top = 186.0
+margin_right = 740.0
+margin_bottom = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon15" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 744.0
+margin_top = 186.0
+margin_right = 926.0
+margin_bottom = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon16" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 930.0
+margin_top = 186.0
+margin_right = 1112.0
+margin_bottom = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon17" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 1116.0
+margin_top = 186.0
+margin_right = 1298.0
+margin_bottom = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon18" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 1302.0
+margin_top = 186.0
+margin_right = 1484.0
+margin_bottom = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon19" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 1488.0
+margin_top = 186.0
+margin_right = 1670.0
+margin_bottom = 368.0
+size_flags_vertical = 0
+
+[node name="LevelSelectIcon20" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 1674.0
+margin_top = 186.0
+margin_right = 1856.0
+margin_bottom = 368.0
+size_flags_vertical = 0

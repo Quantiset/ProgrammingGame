@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/PositionArrow.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Arrow.png" type="Texture" id=2]
+
+[node name="Arrow" type="Line2D"]
+z_index = -1
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+
+[node name="Head" type="Sprite" parent="."]
+texture = ExtResource( 2 )

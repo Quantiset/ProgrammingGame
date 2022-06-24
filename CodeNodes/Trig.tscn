@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CodeNodes/CodeNode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://CodeNodes/Scripts/Trig.gd" type="Script" id=2]
+
+[node name="Trig" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.658824, 0.160784, 0.729412, 1 )
+margin_bottom = 160.0
+
+[node name="Label" parent="." index="3"]
+text = "Trig"

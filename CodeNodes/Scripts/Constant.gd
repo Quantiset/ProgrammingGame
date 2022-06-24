@@ -1,5 +1,12 @@
 extends CodeNode
 
+export (float) var set_value := -1.0
+
+func _ready():
+	if not is_equal_approx(set_value, -1):
+		$TextEdit.text = str(set_value)
+		$TextEdit.readonly = true
+
 func get_value(arrow_idx: int):
 	if arrow_idx == 0: return int($TextEdit.text)
 	return 0

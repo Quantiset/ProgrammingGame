@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CodeNodes/Scripts/PositionGet.gd" type="Script" id=1]
+[ext_resource path="res://CodeNodes/PositionSet.tscn" type="PackedScene" id=2]
+
+[node name="PositionGet" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="OutArrow1" parent="." index="1"]
+visible = true
+
+[node name="InArrow1" parent="." index="2"]
+visible = false
+
+[node name="x1" parent="." index="6"]
+visible = false
+
+[node name="x2" parent="." index="7"]
+visible = true

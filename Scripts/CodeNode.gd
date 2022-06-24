@@ -2,13 +2,6 @@ extends Control
 class_name CodeNode
 tool 
 
-enum Types {
-	Position
-	Addition
-	Constant
-}
-export (Types) var type
-
 onready var arrows := []
 
 var outgoing_lines := {}
@@ -28,7 +21,6 @@ func _ready():
 			arrows.append(child)
 	
 	connect("moved", self, "_moved")
-	set_type(type)
 	
 
 func _input(event):
@@ -56,6 +48,9 @@ func _input(event):
 					if arrow_side == "Out":
 						break
 					
+					if arrow.modulate != Globals.held_line.modulate:
+						break
+					
 					# connect these lines
 					connected_node(Globals.held_line.original_node)
 					Globals.held_line.to_node = self
@@ -70,9 +65,13 @@ func _input(event):
 				if outgoing_lines.has(arrow_index) and outgoing_lines[arrow_index]:
 					outgoing_lines[arrow_index].delete()
 				
+				if arrow_side == "In":
+					break
+				
 				# create a new line
 				var line: ConnectorLine = preload("res://Scenes/ConnectorLine.tscn").instance()
 				add_child(line)
+				line.modulate = arrow.modulate
 				line.original_node = self
 				line.position = arrow.rect_position + Vector2(11, 14)
 				line.incoming_arrow_index = arrow_index
@@ -125,12 +124,6 @@ func set_length(val: int):
 func get_value(arrow_idx: int):
 	return 0
 
-func set_type(val: int):
-	
-	type = val
-	
-	pass
-
 func delete():
 	queue_free()
 
@@ -140,3 +133,6 @@ func connected_node(with: CodeNode):
 
 func _on_TextEdit_focus_entered():
 	has_keyboard_focus = true
+
+
+

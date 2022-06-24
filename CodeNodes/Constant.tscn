@@ -18,3 +18,4 @@ text = "Constant:"
 
 [node name="TextEdit" parent="." index="4"]
 visible = true
+selecting_enabled = false
