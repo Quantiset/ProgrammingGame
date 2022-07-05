@@ -1,6 +1,6 @@
 extends Control
 class_name CodeNode
-tool 
+tool
 
 onready var arrows := []
 
@@ -12,9 +12,13 @@ var length := 2 setget set_length
 var selected_object
 var has_keyboard_focus := false
 
+export (bool) var locked := false setget set_locked
+
 signal moved(by)
+signal connected(line)
 
 func _ready():
+	
 	
 	for child in get_children(): 
 		if "Arrow" in child.name: 
@@ -24,6 +28,8 @@ func _ready():
 	
 
 func _input(event):
+	
+	print(event)
 	
 	if event is InputEventMouseButton and event.is_pressed():
 		
@@ -53,6 +59,7 @@ func _input(event):
 					
 					# connect these lines
 					connected_node(Globals.held_line.original_node)
+					emit_signal("connected", Globals.held_line)
 					Globals.held_line.to_node = self
 					Globals.held_line.outgoing_arrow_index = arrow_index
 					incoming_lines[arrow_index] = Globals.held_line
@@ -82,7 +89,7 @@ func _input(event):
 				outgoing_lines[arrow_index]=line
 				touched_arrow = true
 		
-		if not touched_arrow and $Sprite.get_global_rect().has_point(get_global_mouse_position()):
+		if not locked and not touched_arrow and $Sprite.get_global_rect().has_point(get_global_mouse_position()):
 			get_parent().selected_node = self
 			if Globals.held_line: Globals.held_line.delete()
 
@@ -97,6 +104,10 @@ func _moved(by: Vector2):
 		var og_pos = line.get_point_position(1)
 		line.remove_point(1)
 		line.add_point(og_pos + by * 80)
+
+func set_locked(val: bool):
+	$Lock.visible = val
+	locked = val
 
 func set_length(val: int):
 	if arrows.size() > 2:
@@ -129,7 +140,6 @@ func delete():
 
 func connected_node(with: CodeNode):
 	pass
-
 
 func _on_TextEdit_focus_entered():
 	has_keyboard_focus = true

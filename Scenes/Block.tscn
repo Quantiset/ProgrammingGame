@@ -36,9 +36,9 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = SubResource( 4 )
-shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_color = Color( 0.960784, 0.631373, 0.631373, 1 )
 shader_param/line_thickness = 0.0
-shader_param/obj_color = Color( 1, 1, 1, 1 )
+shader_param/obj_color = Color( 0.305882, 0.14902, 0.211765, 1 )
 
 [node name="Ball" type="KinematicBody2D"]
 collision_layer = 3

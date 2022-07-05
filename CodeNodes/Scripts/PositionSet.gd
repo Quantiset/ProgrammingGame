@@ -1,5 +1,7 @@
 extends CodeNode
 
+func _ready():
+	connect("connected", get_node("../../../../../../.."), "code_node_connected")
 
 func _input(event):
 	if event is InputEventKey and event.is_pressed():

@@ -12,11 +12,7 @@ var is_holding_selected_node := false
 var cached_pos: Vector2
 
 func _ready():
-	
-	var i := 0
-	for child in get_children():
-		if child.is_in_group("CodeNode"):
-			child.rect_position = Vector2(i * 80, 0)
+	pass
 
 func _input(event):
 	
@@ -50,6 +46,5 @@ func _input(event):
 
 
 func _on_StartButton_pressed():
-	print("H")
 	for setter in get_tree().get_nodes_in_group("Setter"):
-		setter.parse()
+		if setter.has_method("parse"): setter.parse()

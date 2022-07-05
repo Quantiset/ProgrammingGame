@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ProgrammingGame"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/LevelSelect.tscn"
 boot_splash/bg_color=Color( 0.160784, 0.160784, 0.160784, 1 )
 config/icon="res://icon.png"
 
@@ -51,6 +51,7 @@ Globals="*res://Scripts/Globals.gd"
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 
 [importer_defaults]
 

@@ -1,5 +1,4 @@
 extends KinematicBody2D
-tool
 
 export (Color) var color = Color(1,1,1) setget set_color
 export (Color) var edge_color = Color(1,1,1) setget set_edge_color
@@ -7,9 +6,7 @@ export (Color) var edge_color = Color(1,1,1) setget set_edge_color
 var is_mouse_hovered := false
 
 var velocity := Vector2()
-
-func _ready():
-	$VelocityArrow.set_as_toplevel(true)
+var end_pos := Vector2()
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -19,9 +16,15 @@ func _input(event):
 		else:
 			_on_Ball_mouse_exited()
 
+func _process(delta):
+	if $VelocityArrow.get_point_count() > 0:
+		$VelocityArrow.remove_point(1)
+		$VelocityArrow.append_point(end_pos - position)
+
 func set_pos(val: Vector2):
-	$VelocityArrow.append_point(position)
-	$VelocityArrow.append_point(position + val)
+	$VelocityArrow.append_point(Vector2())
+	$VelocityArrow.append_point(val)
+	end_pos = val
 	$MovementTween.interpolate_property(self, "position", position, position + val, 1,Tween.TRANS_QUAD,Tween.EASE_IN)
 	$MovementTween.start()
 

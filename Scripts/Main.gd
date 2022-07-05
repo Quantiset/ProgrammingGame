@@ -44,13 +44,16 @@ func _process(delta):
 	$Camera2D.position.x += Input.get_axis("ui_left", "ui_right") * CAMERA_SPEED
 	$Camera2D.position.y += Input.get_axis("ui_up", "ui_down") * CAMERA_SPEED
 	
+	$PositionIndicator.rect_position = get_local_mouse_position().snapped(Vector2(80, 80))
+	$PositionIndicator.text = str((get_local_mouse_position() / 80).round())
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
-
-
 
 
 func _on_HSplitContainer_unhandled_input(event):
 	_unhandled_input(event)
 
+func code_node_connected(line):
+	$CanvasLayer/StartButton/AnimationPlayer.play("dilate")
 
