@@ -33,3 +33,12 @@ margin_right = 145.0
 margin_bottom = 94.0
 text = "out"
 align = 2
+
+[node name="Position" type="Label" parent="." index="9"]
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 154.0
+margin_bottom = 155.0
+text = "(1,1)"
+align = 1
+valign = 1

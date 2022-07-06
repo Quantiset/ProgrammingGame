@@ -57,3 +57,8 @@ func _on_HSplitContainer_unhandled_input(event):
 func code_node_connected(line):
 	$CanvasLayer/StartButton/AnimationPlayer.play("dilate")
 
+
+
+func _on_StartButton_pressed():
+	for node in get_tree().get_nodes_in_group("Setter"):
+		if node.has_method("parse"): node.parse()

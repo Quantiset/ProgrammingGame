@@ -29,8 +29,6 @@ func _ready():
 
 func _input(event):
 	
-	print(event)
-	
 	if event is InputEventMouseButton and event.is_pressed():
 		
 		var touched_arrow := false

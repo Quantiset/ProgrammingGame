@@ -252,3 +252,5 @@ __meta__ = {
 [node name="PositionArrow" parent="." instance=ExtResource( 3 )]
 visible = false
 target = NodePath("../Block")
+
+[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_StartButton_pressed"]
