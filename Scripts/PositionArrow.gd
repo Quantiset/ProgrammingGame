@@ -1,16 +1,19 @@
 extends Line2D
+tool
 
-export (NodePath) onready var target = get_node(target)
+export (NodePath) onready var target = get_node_or_null(target if target is NodePath else "")
 
 func _ready():
-	append_point(target.position)
+	if target:
+		add_point(target.position)
+	$Head.modulate = default_color
 
 func _process(delta):
 	if target:
 		remove_point(1)
-		append_point(target.position)
+		add_point(target.position)
 
-func append_point(val: Vector2):
-	add_point(val)
+func add_point(val: Vector2, thing=2):
+	.add_point(val)
 	$Head.position = val
 	$Head.rotation = val.angle()

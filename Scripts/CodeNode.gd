@@ -16,6 +16,7 @@ export (bool) var locked := false setget set_locked
 
 signal moved(by)
 signal connected(line)
+signal value_changed()
 
 func _ready():
 	
@@ -56,11 +57,11 @@ func _input(event):
 						break
 					
 					# connect these lines
-					connected_node(Globals.held_line.original_node)
 					emit_signal("connected", Globals.held_line)
 					Globals.held_line.to_node = self
 					Globals.held_line.outgoing_arrow_index = arrow_index
 					incoming_lines[arrow_index] = Globals.held_line
+					connected_node(Globals.held_line)
 					Globals.held_line = null
 					touched_arrow = true
 					
@@ -88,7 +89,8 @@ func _input(event):
 				touched_arrow = true
 		
 		if not locked and not touched_arrow and $Sprite.get_global_rect().has_point(get_global_mouse_position()):
-			get_parent().selected_node = self
+			if "selected_node" in get_parent():
+				get_parent().selected_node = self
 			if Globals.held_line: Globals.held_line.delete()
 
 func _moved(by: Vector2):
@@ -136,7 +138,7 @@ func get_value(arrow_idx: int):
 func delete():
 	queue_free()
 
-func connected_node(with: CodeNode):
+func connected_node(with: ConnectorLine):
 	pass
 
 func _on_TextEdit_focus_entered():

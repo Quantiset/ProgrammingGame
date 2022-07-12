@@ -40,7 +40,7 @@ shader_param/line_color = Color( 0.960784, 0.631373, 0.631373, 1 )
 shader_param/line_thickness = 0.0
 shader_param/obj_color = Color( 0.305882, 0.14902, 0.211765, 1 )
 
-[node name="Ball" type="KinematicBody2D"]
+[node name="Block" type="KinematicBody2D"]
 collision_layer = 3
 input_pickable = true
 script = ExtResource( 2 )

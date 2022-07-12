@@ -10,3 +10,7 @@ func _ready():
 func get_value(arrow_idx: int):
 	if arrow_idx == 0: return int($TextEdit.text)
 	return 0
+
+
+func _on_TextEdit_text_changed():
+	emit_signal("value_changed")

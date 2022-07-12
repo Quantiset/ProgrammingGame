@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/TilePlus.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/fonts/SourceCodePro-Black.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="StyleBoxTexture" id=4]
@@ -205,10 +204,6 @@ current = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
 
-[node name="Block" parent="." instance=ExtResource( 4 )]
-color = Color( 0.305882, 0.14902, 0.211765, 1 )
-edge_color = Color( 0.960784, 0.631373, 0.631373, 1 )
-
 [node name="LineN" type="Line2D" parent="."]
 modulate = Color( 1, 1, 1, 0.611765 )
 z_index = -6
@@ -251,6 +246,6 @@ __meta__ = {
 
 [node name="PositionArrow" parent="." instance=ExtResource( 3 )]
 visible = false
-target = NodePath("../Block")
+points = PoolVector2Array( 0, 0, 0, 0 )
 
 [connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_StartButton_pressed"]

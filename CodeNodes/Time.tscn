@@ -19,4 +19,12 @@ text = "Time ()"
 [node name="Time" type="Timer" parent="." index="6"]
 autostart = true
 
+[node name="Button" type="Button" parent="." index="8"]
+margin_left = 100.0
+margin_top = 13.0
+margin_right = 148.0
+margin_bottom = 33.0
+text = "Reset"
+
 [connection signal="timeout" from="Time" to="." method="_on_Time_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

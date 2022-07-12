@@ -1,10 +1,27 @@
 extends CodeNode
 
-var time := 0
+var time := 0.0
+
+func _process(delta):
+	time += delta
+
+func _input(event):
+	if event is InputEventMouseButton:
+		match event.button_index:
+			BUTTON_LEFT:
+				if event.is_pressed() and $Button.get_global_rect().has_point(event.position):
+					time = 0
+					_on_Time_timeout()
+					$Time.start(1)
 
 func get_value(_arrow_idx: int):
-	return OS.get_ticks_msec() / 1000.0
+	return time
 
 func _on_Time_timeout():
-	time += 1
-	$Label.text = "Time (%ss)" % str(time)
+	$Label.text = "Time (%ss)" % str(round(time))
+
+
+func _on_Button_pressed():
+	time = 0
+	_on_Time_timeout()
+	$Time.start(1)

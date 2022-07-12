@@ -1,150 +1,184 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/LevelSelectIcon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Block.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/LevelSelect.gd" type="Script" id=3]
 
 [node name="LevelSelect" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 margin_left = 50.0
-margin_top = 50.0
+margin_top = 162.0
 margin_right = 1870.0
 margin_bottom = 1030.0
-
-[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
-margin_right = 1820.0
-margin_bottom = 980.0
-split_offset = 100
-
-[node name="Control" type="CenterContainer" parent="MarginContainer/VSplitContainer"]
-margin_right = 1820.0
-margin_bottom = 100.0
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VSplitContainer"]
-margin_top = 112.0
-margin_right = 1820.0
-margin_bottom = 980.0
 color = Color( 0, 0, 0, 0.439216 )
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VSplitContainer"]
-margin_top = 112.0
-margin_right = 1820.0
-margin_bottom = 980.0
-columns = 10
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+margin_left = 30.0
+margin_right = 1790.0
+margin_bottom = 868.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+columns = 9
 
-[node name="LevelSelectIcon1" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon1" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon2" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon2" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 186.0
 margin_right = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon3" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon3" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 372.0
 margin_right = 554.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon4" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon4" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 558.0
 margin_right = 740.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon5" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon5" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 744.0
 margin_right = 926.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon6" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon6" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 930.0
 margin_right = 1112.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon7" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon7" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 1116.0
 margin_right = 1298.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon8" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon8" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 1302.0
 margin_right = 1484.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon9" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon9" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 1488.0
 margin_right = 1670.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon10" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
-margin_left = 1674.0
-margin_right = 1856.0
-size_flags_vertical = 0
-
-[node name="LevelSelectIcon11" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon10" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_top = 186.0
 margin_bottom = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon12" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon11" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 186.0
 margin_top = 186.0
 margin_right = 368.0
 margin_bottom = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon13" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon12" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 372.0
 margin_top = 186.0
 margin_right = 554.0
 margin_bottom = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon14" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon13" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 558.0
 margin_top = 186.0
 margin_right = 740.0
 margin_bottom = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon15" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon14" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 744.0
 margin_top = 186.0
 margin_right = 926.0
 margin_bottom = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon16" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon15" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 930.0
 margin_top = 186.0
 margin_right = 1112.0
 margin_bottom = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon17" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon16" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 1116.0
 margin_top = 186.0
 margin_right = 1298.0
 margin_bottom = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon18" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon17" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 1302.0
 margin_top = 186.0
 margin_right = 1484.0
 margin_bottom = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon19" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
+[node name="LevelSelectIcon18" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 1488.0
 margin_top = 186.0
 margin_right = 1670.0
 margin_bottom = 368.0
 size_flags_vertical = 0
 
-[node name="LevelSelectIcon20" parent="MarginContainer/VSplitContainer/GridContainer" instance=ExtResource( 1 )]
-margin_left = 1674.0
-margin_top = 186.0
-margin_right = 1856.0
-margin_bottom = 368.0
+[node name="LevelSelectIcon19" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
+margin_top = 372.0
+margin_bottom = 554.0
 size_flags_vertical = 0
+
+[node name="LevelSelectIcon20" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
+visible = false
+margin_left = 186.0
+margin_top = 372.0
+margin_right = 368.0
+margin_bottom = 554.0
+size_flags_vertical = 0
+
+[node name="CanvasLayer" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.137255 )
+motion_mirroring = Vector2( 1980, 1080 )
+
+[node name="Block" type="Sprite" parent="CanvasLayer/ParallaxLayer"]
+position = Vector2( 160, 160 )
+texture = ExtResource( 2 )
+
+[node name="Block2" type="Sprite" parent="CanvasLayer/ParallaxLayer"]
+position = Vector2( 1200, 720 )
+texture = ExtResource( 2 )
+
+[node name="Block3" type="Sprite" parent="CanvasLayer/ParallaxLayer"]
+position = Vector2( 560, 800 )
+texture = ExtResource( 2 )
+
+[node name="Block4" type="Sprite" parent="CanvasLayer/ParallaxLayer"]
+position = Vector2( 1040, 80 )
+texture = ExtResource( 2 )

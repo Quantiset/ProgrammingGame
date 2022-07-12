@@ -25,14 +25,16 @@ func set_pos(val: Vector2):
 	$VelocityArrow.append_point(Vector2())
 	$VelocityArrow.append_point(val)
 	end_pos = val
-	$MovementTween.interpolate_property(self, "position", position, position + val, 1,Tween.TRANS_QUAD,Tween.EASE_IN)
+	$MovementTween.interpolate_property(self, "position", position, val, 1,Tween.TRANS_QUAD,Tween.EASE_IN)
 	$MovementTween.start()
 
 func set_color(val: Color):
+	return
 	$Sprite.material.set_shader_param("obj_color", val)
 	color = val
 
 func set_edge_color(val: Color):
+	return
 	$Sprite.material.set_shader_param("line_color", val)
 	edge_color = val
 

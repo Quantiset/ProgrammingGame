@@ -15,5 +15,5 @@ func parse():
 		var pos = (incoming_lines[0].get_value() * 80)
 		selected_object.set_pos(pos)
 		$Position.show()
-		$Position.text = str(pos)
+		$Position.text = str(pos / 80)
 
