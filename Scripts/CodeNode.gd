@@ -14,6 +14,8 @@ var has_keyboard_focus := false
 
 export (bool) var locked := false setget set_locked
 
+var parse_input_this_frame := true
+
 signal moved(by)
 signal connected(line)
 signal value_changed()
@@ -30,7 +32,7 @@ func _ready():
 
 func _input(event):
 	
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton and event.is_pressed() and parse_input_this_frame:
 		
 		var touched_arrow := false
 		
@@ -92,6 +94,8 @@ func _input(event):
 			if "selected_node" in get_parent():
 				get_parent().selected_node = self
 			if Globals.held_line: Globals.held_line.delete()
+	
+	parse_input_this_frame = true
 
 func _moved(by: Vector2):
 	
@@ -143,6 +147,7 @@ func connected_node(with: ConnectorLine):
 
 func _on_TextEdit_focus_entered():
 	has_keyboard_focus = true
+	parse_input_this_frame = false
 
 
 
