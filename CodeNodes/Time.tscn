@@ -1,29 +1,53 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://CodeNodes/CodeNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://CodeNodes/Scripts/Time.gd" type="Script" id=2]
+[ext_resource path="res://Assets/LevelSelect.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/fonts/Neon Zone/Neon Zone.otf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 42.037, 41.6914, 96.115, 96.0313 )
+margin_left = 3.07923
+margin_right = 3.1648
+margin_top = 3.4171
+margin_bottom = 2.76238
+modulate_color = Color( 0.709804, 0.407843, 0.0823529, 1 )
 
 [node name="Time" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.709804, 0.407843, 0.0823529, 1 )
-margin_bottom = 160.0
+margin_bottom = 120.0
+
+[node name="OutArrow1" parent="." index="1"]
+margin_top = 46.0
+margin_bottom = 74.0
 
 [node name="InArrow1" parent="." index="2"]
 visible = false
 
 [node name="Label" parent="." index="3"]
+margin_left = 30.0
+margin_right = 138.0
 text = "Time ()"
 
 [node name="Time" type="Timer" parent="." index="6"]
 autostart = true
 
 [node name="Button" type="Button" parent="." index="8"]
-margin_left = 100.0
-margin_top = 13.0
-margin_right = 148.0
-margin_bottom = 33.0
+margin_left = 44.0
+margin_top = 58.0
+margin_right = 114.0
+margin_bottom = 98.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 text = "Reset"
 
 [connection signal="timeout" from="Time" to="." method="_on_Time_timeout"]
