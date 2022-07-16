@@ -10,10 +10,10 @@ func _input(event):
 			KEY_ENTER:
 				parse()
 
-func parse():
+func parse(anim := true):
 	if incoming_lines.has(0):
 		var pos = (incoming_lines[0].get_value() * 80)
-		selected_object.set_pos(pos)
+		selected_object.set_pos(pos, anim)
 		$Position.show()
 		$Position.text = str(pos / 80)
 

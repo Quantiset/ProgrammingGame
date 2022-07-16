@@ -10,6 +10,9 @@ const MIN_ZOOM = 1
 var is_mouse_held := false
 var mouse_start_pos: Vector2
 
+var process_parse := false
+
+
 func _input(event):
 	
 	if event is InputEventMouseButton:
@@ -53,6 +56,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_reset"):
 		get_tree().reload_current_scene()
 	
+	if process_parse:
+		parse(false)
+	
 
 
 func _on_HSplitContainer_unhandled_input(event):
@@ -64,5 +70,16 @@ func code_node_connected(line):
 
 
 func _on_StartButton_pressed():
+	parse()
+	print($CanvasLayer/StartButton.type, " ", $CanvasLayer/StartButton.Types.Process)
+	if $CanvasLayer/StartButton.type == $CanvasLayer/StartButton.Types.Process:
+		process_parse = true
+
+func parse(anim := true):
 	for node in get_tree().get_nodes_in_group("Setter"):
-		if node.has_method("parse"): node.parse()
+		if node.has_method("parse"): 
+			node.parse(anim)
+
+
+func _on_ResetButton_pressed():
+	get_tree().reload_current_scene()

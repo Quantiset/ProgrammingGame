@@ -10,7 +10,7 @@
 font_path = "res://Assets/fonts/Neon Zone/Neon Zone Italic.otf"
 
 [sub_resource type="DynamicFont" id=2]
-size = 24
+size = 17
 font_data = SubResource( 1 )
 
 [node name="CodeNode" type="Control" groups=["CodeNode"]]
@@ -55,16 +55,17 @@ stretch_mode = 4
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 28.0
+margin_left = 13.0
 margin_top = 16.0
-margin_right = 136.0
-margin_bottom = 43.0
+margin_right = 115.0
+margin_bottom = 65.0
 mouse_filter = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Position"
+autowrap = true
 
 [node name="TextEdit" type="TextEdit" parent="."]
 visible = false
@@ -79,7 +80,6 @@ wait_time = 0.05
 one_shot = true
 
 [node name="Lock" type="TextureRect" parent="."]
-visible = false
 margin_left = 117.0
 margin_top = 11.0
 margin_right = 157.0

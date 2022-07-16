@@ -14,6 +14,7 @@ var cached_pos: Vector2
 func _ready():
 	pass
 
+
 func _input(event):
 	
 	if event is InputEventMouseButton:

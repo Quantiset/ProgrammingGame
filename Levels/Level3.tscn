@@ -17,6 +17,9 @@ margin_bottom = 5115.0
 
 [node name="Level3Code" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport" index="0" instance=ExtResource( 3 )]
 
+[node name="Polygon2D" parent="CanvasLayer/StartButton" index="0"]
+color = Color( 0.121569, 0.592157, 0.152941, 0.72549 )
+
 [node name="Block" parent="." index="10" instance=ExtResource( 5 )]
 position = Vector2( 80, 80 )
 

@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/TilePlus.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/BlockBorder.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/StartButton.gd" type="Script" id=5]
 [ext_resource path="res://Assets/fonts/SourceCodePro-Black.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="StyleBoxTexture" id=4]
@@ -85,6 +87,16 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
 [sub_resource type="Environment" id=3]
 background_mode = 4
 glow_enabled = true
@@ -163,6 +175,7 @@ custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 7 )
 custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
+script = ExtResource( 5 )
 
 [node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/StartButton"]
 position = Vector2( -801, 0 )
@@ -197,6 +210,41 @@ color = Color( 0, 0, 0, 0 )
 autoplay = "start"
 anims/RESET = SubResource( 12 )
 anims/start = SubResource( 13 )
+
+[node name="ResetButton" type="Button" parent="CanvasLayer"]
+margin_left = 1760.0
+margin_right = 1920.0
+margin_bottom = 160.0
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/disabled = SubResource( 18 )
+custom_styles/normal = SubResource( 19 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/ResetButton"]
+position = Vector2( -801, 0 )
+color = Color( 0.121569, 0.592157, 0.152941, 0.72549 )
+polygon = PoolVector2Array( 801, 0, 800, 160, 1040, 160, 1120, 0 )
+
+[node name="Label" type="Label" parent="CanvasLayer/ResetButton"]
+margin_right = 160.0
+margin_bottom = 160.0
+text = "Reset (R)"
+align = 1
+valign = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/ResetButton"]
+margin_top = -80.0
+margin_right = 240.0
+margin_bottom = 160.0
+texture = ExtResource( 4 )
+patch_margin_left = 11
+patch_margin_top = 10
+patch_margin_right = 9
+patch_margin_bottom = 9
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -249,3 +297,4 @@ visible = false
 points = PoolVector2Array( 0, 0, 0, 0 )
 
 [connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/ResetButton" to="." method="_on_ResetButton_pressed"]

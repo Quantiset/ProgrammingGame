@@ -21,12 +21,16 @@ func _process(delta):
 		$VelocityArrow.remove_point(1)
 		$VelocityArrow.append_point(end_pos - position)
 
-func set_pos(val: Vector2):
+func set_pos(val: Vector2, anim := true):
 	$VelocityArrow.append_point(Vector2())
 	$VelocityArrow.append_point(val)
 	end_pos = val
-	$MovementTween.interpolate_property(self, "position", position, val, 1,Tween.TRANS_QUAD,Tween.EASE_IN)
-	$MovementTween.start()
+	print(val)
+	if anim:
+		$MovementTween.interpolate_property(self, "position", position, val, 1,Tween.TRANS_QUAD,Tween.EASE_IN)
+		$MovementTween.start()
+	else:
+		position = val
 
 func set_color(val: Color):
 	return
