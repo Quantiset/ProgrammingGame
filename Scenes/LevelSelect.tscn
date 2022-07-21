@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/LevelSelectIcon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/LevelSelect.gd" type="Script" id=3]
+[ext_resource path="res://Assets/fonts/SourceCodePro-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -131,6 +132,10 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 107
+font_data = ExtResource( 4 )
 
 [node name="LevelSelect" type="Control"]
 anchor_right = 1.0
@@ -301,3 +306,11 @@ material = SubResource( 2 )
 position = Vector2( 960, 520 )
 scale = Vector2( 31, 17 )
 texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1920.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 3 )
+text = "Levels"
+align = 1
+valign = 2

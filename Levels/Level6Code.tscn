@@ -15,11 +15,12 @@ margin_top = 80.0
 margin_right = 640.0
 margin_bottom = 80.0
 
-[node name="PositionGet" parent="." index="4" instance=ExtResource( 4 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
+[node name="PositionGet" parent="." index="4" groups=["CodeNode"] instance=ExtResource( 4 )]
+margin_left = 1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = -1.0
+mouse_filter = 1
 
 [node name="VectorAddition" parent="." index="5" instance=ExtResource( 3 )]
 margin_left = 320.0

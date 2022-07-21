@@ -128,12 +128,11 @@ margin_right = 240.0
 margin_bottom = 400.0
 locked = true
 
-[node name="PositionGet" parent="." index="5" groups=["CodeNode"] instance=ExtResource( 3 )]
+[node name="PositionGet" parent="." index="5" instance=ExtResource( 3 )]
 margin_left = -240.0
 margin_top = 80.0
 margin_right = -240.0
 margin_bottom = 80.0
-mouse_filter = 1
 
 [node name="Vector2Deconstructor" parent="." index="6" instance=ExtResource( 7 )]
 margin_top = 80.0

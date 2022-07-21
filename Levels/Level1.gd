@@ -10,7 +10,9 @@ func _input(event):
 func _process(delta):
 	if $Block.position.is_equal_approx($Pointer.position):
 		set_process(false)
-		yield(get_tree().create_timer(1), "timeout")
+		$CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level1Code/AnimationPlayer.play("End")
+		yield($CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level1Code/AnimationPlayer, "animation_finished")
+		yield(get_tree().create_timer(2), "timeout")
 		Globals.set_level_complete(1)
 		Globals.change_scene("res://Scenes/LevelSelect.tscn")
 
