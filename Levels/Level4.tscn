@@ -85,3 +85,4 @@ margin_bottom = 94.0
 text = "When you can't directly set position?"
 
 [node name="Block" parent="." index="12" instance=ExtResource( 7 )]
+position = Vector2( 80, -80 )

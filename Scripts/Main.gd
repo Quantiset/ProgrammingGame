@@ -37,6 +37,10 @@ func _input(event):
 
 func _ready():
 	
+	$CanvasLayer/StartButton.show()
+	$CanvasLayer/ResetButton.show()
+	$CanvasLayer/MenuButton.show()
+	
 	for code_node in get_tree().get_nodes_in_group("CodeNode"):
 		code_node.selected_object = $Block
 	
@@ -56,6 +60,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_reset"):
 		get_tree().reload_current_scene()
 	
+	if Input.is_action_just_pressed("ui_menu"):
+		get_tree().change_scene("res://Scenes/LevelSelect.tscn")
+	
 	if process_parse:
 		parse(false)
 	
@@ -71,7 +78,6 @@ func code_node_connected(line):
 
 func _on_StartButton_pressed():
 	parse()
-	print($CanvasLayer/StartButton.type, " ", $CanvasLayer/StartButton.Types.Process)
 	if $CanvasLayer/StartButton.type == $CanvasLayer/StartButton.Types.Process:
 		process_parse = true
 
@@ -83,3 +89,7 @@ func parse(anim := true):
 
 func _on_ResetButton_pressed():
 	get_tree().reload_current_scene()
+
+
+func _on_MenuButton_pressed():
+	get_tree().change_scene("res://Scenes/LevelSelect.tscn")

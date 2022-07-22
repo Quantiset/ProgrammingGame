@@ -20,4 +20,4 @@ margin_bottom = 4555.0
 [node name="Block" parent="." index="10" instance=ExtResource( 7 )]
 
 [node name="Pointer" parent="." index="11" instance=ExtResource( 3 )]
-position = Vector2( 320, -241 )
+position = Vector2( 320, -240 )

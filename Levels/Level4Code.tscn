@@ -24,7 +24,9 @@ margin_bottom = 80.0
 locked = true
 
 [node name="Constant" parent="." index="5" instance=ExtResource( 1 )]
+margin_left = 0.0
 margin_top = 320.0
+margin_right = 0.0
 margin_bottom = 320.0
 locked = true
 set_value = 2.0

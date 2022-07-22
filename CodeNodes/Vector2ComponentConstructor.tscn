@@ -14,7 +14,10 @@ margin_bottom = 6.65
 modulate_color = Color( 0.713726, 0.713726, 0.713726, 1 )
 
 [node name="Vector2ComponentConstructor" instance=ExtResource( 1 )]
-rect_pivot_offset = Vector2( -167, -40 )
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
 script = ExtResource( 3 )
 
 [node name="OutArrow1" parent="." index="1"]

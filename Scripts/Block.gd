@@ -22,10 +22,10 @@ func _process(delta):
 		$VelocityArrow.append_point(end_pos - position)
 
 func set_pos(val: Vector2, anim := true):
+	$VelocityArrow.clear_points()
 	$VelocityArrow.append_point(Vector2())
 	$VelocityArrow.append_point(val)
 	end_pos = val
-	print(val)
 	if anim:
 		$MovementTween.interpolate_property(self, "position", position, val, 1,Tween.TRANS_QUAD,Tween.EASE_IN)
 		$MovementTween.start()

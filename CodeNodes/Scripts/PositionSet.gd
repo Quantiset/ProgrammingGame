@@ -11,9 +11,12 @@ func _input(event):
 				parse()
 
 func parse(anim := true):
-	if incoming_lines.has(0):
-		var pos = (incoming_lines[0].get_value() * 80)
-		selected_object.set_pos(pos, anim)
-		$Position.show()
-		$Position.text = str(pos / 80)
+	for obj in get_tree().get_nodes_in_group("Moveable"):
+		if incoming_lines.has(0):
+			for node in get_tree().get_nodes_in_group("CodeNode"):
+				node.selected_object = obj
+			var pos = (incoming_lines[0].get_value() * 80)
+			selected_object.set_pos(pos, anim)
+			$Position.show()
+			$Position.text = str(pos / 80)
 

@@ -3,6 +3,7 @@ class_name ConnectorLine
 
 const SPLINE_LENGTH = 80
 
+var set := false
 var original_node
 var to_node
 

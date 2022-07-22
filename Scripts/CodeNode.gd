@@ -20,8 +20,28 @@ signal moved(by)
 signal connected(line)
 signal value_changed()
 
+export (Array, Resource) var custom_connections
+
 func _ready():
 	
+	for connection in custom_connections:
+		var to_node = get_node(connection.connection)
+		var from_idx = connection.connection_from_idx
+		var to_idx = connection.connection_to_idx
+		var line: ConnectorLine = create_line(
+			get_node("OutArrow"+str(from_idx+1)), from_idx
+		)
+		line.add_point(
+			(to_node.get_node("InArrow"+str(to_idx+1)).rect_global_position + Globals.HALF_ARROW_OFFSET) - 
+			(get_node("OutArrow"+str(from_idx+1)).rect_global_position + Globals.HALF_ARROW_OFFSET)
+		)
+		line.set = true
+		line.to_node = to_node
+		line.outgoing_arrow_index = to_idx
+		emit_signal("connected", line)
+		connected_node(line)
+		to_node.incoming_lines[to_idx] = line
+		outgoing_lines[from_idx]=line
 	
 	for child in get_children(): 
 		if "Arrow" in child.name: 
@@ -45,6 +65,10 @@ func _input(event):
 			if arrow.get_global_rect().has_point(get_global_mouse_position()):
 				var arrow_index: int = int(arrow.name[-1]) - 1
 				var arrow_side: String = "Out" if arrow.name.begins_with("Out") else "In"
+				
+				if arrow_side == "Out" and \
+						outgoing_lines.has(arrow_index) and outgoing_lines[arrow_index].set:
+					break
 				
 				# if player is already holding a line while touching an arrow
 				if Globals.held_line:
@@ -77,25 +101,33 @@ func _input(event):
 					break
 				
 				# create a new line
-				var line: ConnectorLine = preload("res://Scenes/ConnectorLine.tscn").instance()
-				add_child(line)
-				line.modulate = arrow.modulate
-				line.original_node = self
-				line.position = arrow.rect_position + Vector2(11, 14)
-				line.incoming_arrow_index = arrow_index
-				line.add_point(Vector2())
+				var line: ConnectorLine = create_line(arrow, arrow_index)
 				line.add_point(get_local_mouse_position())
 				
 				Globals.held_line = line
 				outgoing_lines[arrow_index]=line
 				touched_arrow = true
 		
-		if not locked and not touched_arrow and $Sprite.get_global_rect().has_point(get_global_mouse_position()):
-			if "selected_node" in get_parent():
+		print(get_children())
+		if (not locked and not touched_arrow and 
+		$Sprite.get_global_rect().has_point(get_global_mouse_position())):
+			if (get_node_or_null("TextEdit") == null) or ($TextEdit.visible and $TextEdit.get_global_rect().has_point(get_global_mouse_position())):
+				pass
+			elif "selected_node" in get_parent():
 				get_parent().selected_node = self
 			if Globals.held_line: Globals.held_line.delete()
 	
 	parse_input_this_frame = true
+
+func create_line(arrow, arrow_index) -> ConnectorLine:
+	var line: ConnectorLine = preload("res://Scenes/ConnectorLine.tscn").instance()
+	add_child(line)
+	line.modulate = arrow.modulate
+	line.original_node = self
+	line.position = arrow.rect_position + Globals.HALF_ARROW_OFFSET
+	line.incoming_arrow_index = arrow_index
+	line.add_point(Vector2())
+	return line
 
 func _moved(by: Vector2):
 	

@@ -16,4 +16,4 @@ func _process(delta):
 func add_point(val: Vector2, thing=2):
 	.add_point(val)
 	$Head.position = val
-	$Head.rotation = val.angle()
+	$Head.rotation = (val - get_point_position(0)).normalized().angle()

@@ -1,5 +1,6 @@
 extends Node
 
+const HALF_ARROW_OFFSET = Vector2(11, 14)
 const TILE_SIZE = Vector2(80, 80)
 
 var held_line
