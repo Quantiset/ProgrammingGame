@@ -52,6 +52,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Scripts/Globals.gd"
+GlobalAudioStream="*res://Scripts/AudioStream.gd"
 
 [display]
 

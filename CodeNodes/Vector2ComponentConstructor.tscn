@@ -36,15 +36,7 @@ text = "create
 [node name="TextEdit" parent="." index="4"]
 visible = true
 
-[node name="x" type="Label" parent="." index="5"]
-margin_left = 15.0
-margin_top = 59.0
-margin_right = 40.0
-margin_bottom = 115.0
-text = "x"
-valign = 1
-
-[node name="TextEdit2" type="TextEdit" parent="." index="6"]
+[node name="TextEdit2" type="TextEdit" parent="." index="5"]
 margin_left = 30.0
 margin_top = 139.0
 margin_right = 130.0
@@ -55,9 +47,18 @@ custom_styles/normal = SubResource( 1 )
 [node name="ColorRect" type="ColorRect" parent="TextEdit2" index="6"]
 margin_right = 100.0
 margin_bottom = 56.0
+mouse_filter = 2
 color = Color( 0.478431, 0.478431, 0.756863, 0.160784 )
 
-[node name="y" type="Label" parent="." index="7"]
+[node name="x" type="Label" parent="." index="7"]
+margin_left = 15.0
+margin_top = 59.0
+margin_right = 40.0
+margin_bottom = 115.0
+text = "x"
+valign = 1
+
+[node name="y" type="Label" parent="." index="8"]
 margin_left = 15.0
 margin_top = 139.0
 margin_right = 40.0

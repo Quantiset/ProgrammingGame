@@ -11,6 +11,9 @@ var SAVE_DICT := {
 }
 var save_dict := SAVE_DICT.duplicate()
 
+var show_fps := false
+var fps_label: Label
+
 func _ready():
 	var f := File.new()
 	f.open(SAVE_FILE, f.READ_WRITE)
@@ -18,6 +21,9 @@ func _ready():
 	if temp:
 		save_dict = temp
 	f.close()
+	
+	fps_label = Label.new()
+	add_child(fps_label)
 
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed():
@@ -30,6 +36,10 @@ func _process(delta):
 	if held_line and is_instance_valid(held_line):
 		held_line.remove_point(1)
 		held_line.add_point(held_line.get_local_mouse_position())
+	
+	if show_fps and fps_label:
+		fps_label.text = str(Engine.get_frames_per_second())
+	
 
 func change_scene(scene: String):
 	get_tree().change_scene(scene)

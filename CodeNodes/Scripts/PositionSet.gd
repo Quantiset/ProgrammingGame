@@ -1,7 +1,8 @@
 extends CodeNode
 
 func _ready():
-	connect("connected", get_node("../../../../../../.."), "code_node_connected")
+	help_info = "Takes in a Vector2 to set the position of the block to. Will set the position in respect of the origin"
+	connect("connected", main, "code_node_connected")
 	$Position.hide()
 
 func _input(event):

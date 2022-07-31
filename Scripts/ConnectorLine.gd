@@ -3,6 +3,7 @@ class_name ConnectorLine
 
 const SPLINE_LENGTH = 80
 
+var mode := "value"
 var set := false
 var original_node
 var to_node
@@ -34,6 +35,9 @@ func delete():
 
 func get_value():
 	return original_node.get_value(incoming_arrow_index)
+
+func advance():
+	to_node.advance()
 
 func _draw():
 	var points = curve.get_baked_points()

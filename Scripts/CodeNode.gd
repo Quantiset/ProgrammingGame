@@ -11,6 +11,7 @@ var length := 2 setget set_length
 
 var selected_object
 var has_keyboard_focus := false
+var help_mode := false
 
 export (bool) var locked := false setget set_locked
 
@@ -21,6 +22,10 @@ signal connected(line)
 signal value_changed()
 
 export (Array, Resource) var custom_connections
+
+onready var main = get_node("../../../../../../..")
+
+var help_info := ""
 
 func _ready():
 	
@@ -51,6 +56,13 @@ func _ready():
 	
 
 func _input(event):
+	
+	if event is InputEventMouseMotion:
+		if help_mode:
+			if $Sprite.get_global_rect().has_point(get_global_mouse_position()):
+				$HelpLabel.show()
+			else:
+				$HelpLabel.hide()
 	
 	if event is InputEventMouseButton and event.is_pressed() and parse_input_this_frame:
 		
@@ -108,10 +120,9 @@ func _input(event):
 				outgoing_lines[arrow_index]=line
 				touched_arrow = true
 		
-		print(get_children())
 		if (not locked and not touched_arrow and 
 		$Sprite.get_global_rect().has_point(get_global_mouse_position())):
-			if (get_node_or_null("TextEdit") == null) or ($TextEdit.visible and $TextEdit.get_global_rect().has_point(get_global_mouse_position())):
+			if hovering_over_a_text_edit():
 				pass
 			elif "selected_node" in get_parent():
 				get_parent().selected_node = self
@@ -181,5 +192,12 @@ func _on_TextEdit_focus_entered():
 	has_keyboard_focus = true
 	parse_input_this_frame = false
 
+func hovering_over_a_text_edit():
+	for child in get_children():
+		if "TextEdit" in child.name and child.get_global_rect().has_point(get_global_mouse_position()):
+			return child.visible
 
+func toggle_help():
+	$HelpLabel.text = help_info
+	help_mode = not help_mode
 

@@ -12,6 +12,8 @@ var mouse_start_pos: Vector2
 
 var process_parse := false
 
+signal help_clicked
+
 
 func _input(event):
 	
@@ -77,14 +79,26 @@ func code_node_connected(line):
 
 
 func _on_StartButton_pressed():
+	if $CanvasLayer/StartButton.type == $CanvasLayer/StartButton.Types.Custom:
+		for node in get_tree().get_nodes_in_group("CodeNode"):
+			if node.has_method("start_logic_chain"):
+				node.start_logic_chain()
+		return
 	parse()
 	if $CanvasLayer/StartButton.type == $CanvasLayer/StartButton.Types.Process:
 		process_parse = true
 
 func parse(anim := true):
-	for node in get_tree().get_nodes_in_group("Setter"):
-		if node.has_method("parse"): 
-			node.parse(anim)
+	for cnode in get_tree().get_nodes_in_group("Setter"):
+		if cnode.has_method("parse"): 
+			for obj in get_tree().get_nodes_in_group("Moveable"):
+				if cnode.incoming_lines.has(0):
+					for node in get_tree().get_nodes_in_group("CodeNode"):
+						node.selected_object = obj
+					var pos = (cnode.incoming_lines[0].get_value() * 80)
+					cnode.selected_object.set_pos(pos, anim)
+					cnode.get_node("Position").show()
+					cnode.get_node("Position").text = str(pos / 80)
 
 
 func _on_ResetButton_pressed():
@@ -93,3 +107,9 @@ func _on_ResetButton_pressed():
 
 func _on_MenuButton_pressed():
 	get_tree().change_scene("res://Scenes/LevelSelect.tscn")
+
+
+func _on_HelpButton_pressed():
+	$CanvasLayer/HelpButton/ColorRect.visible = not \
+			$CanvasLayer/HelpButton/ColorRect.visible
+	emit_signal("help_clicked")

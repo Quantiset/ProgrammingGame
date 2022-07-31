@@ -1,5 +1,7 @@
 extends CodeNode
 
+func _init():
+	help_info = "Adds together two numbers"
 
 func get_value(arrow_idx: int):
 	if arrow_idx == 0:

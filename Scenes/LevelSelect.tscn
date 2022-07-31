@@ -142,6 +142,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1120.0
+color = Color( 0.0156863, 0.0117647, 0.027451, 0.356863 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = 50.0
 margin_top = 162.0
@@ -301,7 +306,7 @@ modulate = Color( 1, 1, 1, 0.137255 )
 motion_mirroring = Vector2( 1980, 1080 )
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/ParallaxLayer"]
-modulate = Color( 0.862745, 0.870588, 0.964706, 0.0823529 )
+modulate = Color( 0.862745, 0.870588, 0.964706, 0.184314 )
 material = SubResource( 2 )
 position = Vector2( 960, 520 )
 scale = Vector2( 31, 17 )

@@ -11,8 +11,7 @@ func _ready():
 
 func get_value(arrow_idx: int):
 	if arrow_idx == 0: 
-		print(Vector2(int($TextEdit.text), int($TextEdit2.text)))
-		return Vector2(int($TextEdit.text), int($TextEdit2.text))
+		return Vector2(float($TextEdit.text), float($TextEdit2.text))
 	return Vector2()
 
 func _on_TextEdit_text_changed():

@@ -1,6 +1,7 @@
 extends CodeNode
 
 func _ready():
+	help_info = "Create a Vector2 with two number components"
 	$Pointer.add_point(Vector2(75, 125))
 	$Pointer.add_point(Vector2(75, 125))
 

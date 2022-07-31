@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Karl Casey - White Bat XIII - 01 Space Dust.mp3-dab2a7570c97e33835491f8190b7cc68.mp3str"
+
+[deps]
+
+source_file="res://Assets/Karl Casey - White Bat XIII - 01 Space Dust.mp3"
+dest_files=[ "res://.import/Karl Casey - White Bat XIII - 01 Space Dust.mp3-dab2a7570c97e33835491f8190b7cc68.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
