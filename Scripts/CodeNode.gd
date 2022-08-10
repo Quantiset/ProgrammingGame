@@ -126,7 +126,8 @@ func _input(event):
 				pass
 			elif "selected_node" in get_parent():
 				get_parent().selected_node = self
-			if Globals.held_line: Globals.held_line.delete()
+			if is_instance_valid(Globals.held_line): Globals.held_line.delete()
+			else: Globals.held_line = null
 	
 	parse_input_this_frame = true
 
@@ -151,6 +152,10 @@ func _moved(by: Vector2):
 		var og_pos = line.get_point_position(1)
 		line.remove_point(1)
 		line.add_point(og_pos + by * 80)
+	
+	$Scrape.play(0.25)
+	yield(get_tree().create_timer(.4), "timeout")
+	$Scrape.playing = false
 
 func set_locked(val: bool):
 	$Lock.visible = val
@@ -198,6 +203,8 @@ func hovering_over_a_text_edit():
 			return child.visible
 
 func toggle_help():
-	$HelpLabel.text = help_info
+	$HelpLabel.bbcode_text = help_info
 	help_mode = not help_mode
+
+
 

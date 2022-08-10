@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://CodeNodes/CodeNode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://CodeNodes/Scripts/MousePosition.gd" type="Script" id=2]
+
+[node name="MousePosition" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.266667, 0.117647, 0.329412, 1 )
+margin_bottom = 160.0
+
+[node name="OutArrow1" parent="." index="1"]
+modulate = Color( 0.177762, 0.867188, 0.057587, 1 )
+color = 1
+
+[node name="InArrow1" parent="." index="2"]
+visible = false
+
+[node name="Label" parent="." index="3"]
+text = "Mouse
+Position"

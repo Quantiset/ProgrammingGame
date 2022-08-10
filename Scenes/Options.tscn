@@ -1,11 +1,141 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/fonts/SourceCodePro-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/fonts/Neon Zone/Neon Zone.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Options.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Exit.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 107
 font_data = ExtResource( 1 )
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Created by Matthew Arcus, 2018
+// Wythoff construction for dual snub quadrille tessellation
+//
+// Fold down to square fundamental region. Draw lines to \"Wythoff point\".
+// Keep track of folding for consistent coloring.
+//
+// Now with extra colors:
+// 'c' changes color scheme to one per tile type
+// 'r' shows fundamental region
+//
+////////////////////////////////////////////////////////////////////////////////
+
+const float PI = 3.141592654;
+const float TWOPI = 2.0*PI;
+
+vec2 perp(vec2 r) {
+  return vec2(-r.y,r.x);
+}
+
+int imod(int n, int m) {
+  int k = n - n/m*m;
+  if (k < 0) return k+m;
+  else return k;
+}
+
+const int CHAR_C = 67;
+const int CHAR_R = 82;
+const int CHAR_S = 83;
+const int CHAR_Z = 90;
+
+
+vec3 getcol0(ivec2 s) {
+  int i = 2*imod(s.x,2)+imod(s.y,2);
+  if (i == 0) return vec3(1,0,0);
+  if (i == 1) return vec3(0,1,0);
+  if (i == 2) return vec3(0,0,1);
+  if (i == 3) return vec3(1,1,0);
+  if (i == 4) return vec3(1,0,1);
+  if (i == 5) return vec3(0,1,1);
+  if (i == 6) return vec3(1,1,1);
+  return vec3(1,1,1);
+}
+
+vec3 getcol1(ivec2 s) {
+  // https://iquilezles.org/articles/palettes
+  float t = 0.1*TIME + 0.1*0.618*float(s.x+s.y);
+  vec3 a = vec3(0.4);
+  vec3 b = vec3(0.6);
+  vec3 c = vec3(1,1,1);
+  vec3 d = vec3(0,0.33,0.67);
+  vec3 col = a + b*cos(TWOPI*(c*t+d));
+  return col;
+}
+
+vec3 getcol(ivec2 s) {
+  return getcol1(s);
+}
+
+// segment function by FabriceNeyret2
+float segment(vec2 p, vec2 a, vec2 b) {
+  vec2 pa = p - a;
+  vec2 ba = b - a;
+  float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0);
+  float d = length(pa - ba * h);
+  return d;
+}
+
+ivec2 nextcell(ivec2 s, int q) {
+  q = imod(q,4);
+  if (q == 0) s.x++;
+  else if (q == 1) s.y--;
+  else if (q == 2) s.x--;
+  else if (q == 3) s.y++;
+  return s;
+}
+
+void fragment() {
+	vec2 iResolution = 1./SCREEN_PIXEL_SIZE;
+	
+  float scale = 3.3;
+  float lwidth = 0.025;
+  // Half the width of the AA line edge
+  float awidth = 1.5*scale/iResolution.y;
+  vec2 q,p = (2.0*FRAGCOORD.xy-iResolution.xy)/iResolution.y;
+  q = mod(0.3*TIME*vec2(1,1.618),2.0);
+  q = min(q,2.0-q);
+  p *= scale;
+  ivec2 s = ivec2(floor(p));
+  p = mod(p,2.0)-1.0; // Fold down to ±1 square
+  int parity = int((p.y < 0.0) != (p.x < 0.0)); // Reflection?
+  int quad = 2*int(p.x < 0.0) + parity; // Quadrant
+  p = abs(p);
+  if (parity != 0) p.xy = p.yx;
+  // Lines from triangle vertices to Wythoff point
+  float d = 1e8;
+  d = min(d,segment(p,vec2(0,0),q));
+  d = min(d,segment(p,vec2(1,0),q));
+  d = min(d,segment(p,vec2(1,1),q));
+  d = min(d,segment(p,vec2(-q.y,q.x),vec2(q.y,-q.x)));
+  d = min(d,segment(p,vec2(-q.y,q.x),vec2(q.y,2.0-q.x)));
+  d = min(d,segment(p,vec2(2.0-q.y,q.x),vec2(q.y,2.0-q.x)));
+  // Color - what side of the lines are we?
+  float a = dot(p-q,perp(vec2(0,0)-q));
+  float b = dot(p-q,perp(vec2(1,0)-q));
+  float c = dot(p-q,perp(vec2(1,1)-q));
+  bool unit = s == ivec2(0);
+  if (b > 0.0) {
+    if (c < 0.0) s = nextcell(s,quad);
+  } else {
+    if (a > 0.0) s = nextcell(s,quad+1);
+  }
+  vec3 col = vec3(1.);
+  col = mix(col,vec3(1),0.1);
+  col *= 0.75;
+  col = mix(vec3(0),col,smoothstep(lwidth-awidth,lwidth+awidth,d));
+
+  COLOR = vec4(1.0-sqrt(col),1.0);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 4 )
 
 [node name="Options" type="VSplitContainer"]
 anchor_right = 1.0
@@ -13,47 +143,113 @@ anchor_bottom = 1.0
 collapsed = true
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 1920.0
-margin_bottom = 136.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 0, 160 )
+mouse_filter = 2
+color = Color( 0.14902, 0.168627, 0.203922, 1 )
+
+[node name="Label" type="Label" parent="ColorRect"]
+margin_right = 1920.0
+margin_bottom = 160.0
 custom_fonts/font = SubResource( 1 )
 text = "Options"
 align = 1
 valign = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 148.0
+[node name="ExitButton" type="TextureButton" parent="ColorRect"]
+margin_right = 160.0
+margin_bottom = 160.0
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_top = 172.0
 margin_right = 1920.0
 margin_bottom = 1080.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 0
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 637.0
-margin_bottom = 932.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 50.0
+margin_right = 1870.0
+margin_bottom = 858.0
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer"]
+margin_bottom = 858.0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Panel"]
+margin_left = 4.0
+margin_right = 1784.0
+margin_bottom = 880.0
+rect_min_size = Vector2( 1720, 0 )
+color = Color( 0, 0, 0, 0.439216 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 4.0
+margin_right = 602.0
+margin_bottom = 858.0
 size_flags_horizontal = 3
 
-[node name="VSyncButton" type="CheckButton" parent="HBoxContainer/VBoxContainer"]
-margin_right = 637.0
+[node name="VSyncButton" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 598.0
 margin_bottom = 40.0
 pressed = true
 text = "VSync"
 
-[node name="FPSButton" type="CheckButton" parent="HBoxContainer/VBoxContainer"]
+[node name="FPSButton" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 44.0
-margin_right = 637.0
+margin_right = 598.0
 margin_bottom = 84.0
 text = "Show FPS"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 641.0
-margin_right = 1278.0
-margin_bottom = 932.0
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 606.0
+margin_right = 609.0
+margin_bottom = 858.0
+rect_min_size = Vector2( 3, 0 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 613.0
+margin_right = 1211.0
+margin_bottom = 858.0
 size_flags_horizontal = 3
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 1282.0
+[node name="HSplitContainer2" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 1215.0
+margin_right = 1218.0
+margin_bottom = 858.0
+rect_min_size = Vector2( 3, 0 )
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 1222.0
+margin_right = 1820.0
+margin_bottom = 858.0
+size_flags_horizontal = 3
+
+[node name="CanvasLayer" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
 margin_right = 1920.0
-margin_bottom = 932.0
-size_flags_horizontal = 3
+margin_bottom = 1120.0
+color = Color( 0.0156863, 0.0117647, 0.027451, 0.356863 )
 
-[connection signal="toggled" from="HBoxContainer/VBoxContainer/VSyncButton" to="." method="_on_CheckButton_toggled" binds= [ "VSync" ]]
-[connection signal="toggled" from="HBoxContainer/VBoxContainer/FPSButton" to="." method="_on_CheckButton_toggled" binds= [ "FPS" ]]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.137255 )
+motion_mirroring = Vector2( 1980, 1080 )
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/ParallaxLayer"]
+modulate = Color( 0.862745, 0.870588, 0.964706, 0.184314 )
+material = SubResource( 3 )
+position = Vector2( 960, 520 )
+scale = Vector2( 31, 17 )
+texture = ExtResource( 3 )
+
+[connection signal="pressed" from="ColorRect/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/VSyncButton" to="." method="_on_CheckButton_toggled" binds= [ "VSync" ]]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/FPSButton" to="." method="_on_CheckButton_toggled" binds= [ "FPS" ]]

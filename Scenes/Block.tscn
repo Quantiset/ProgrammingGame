@@ -53,7 +53,8 @@ material = SubResource( 5 )
 texture = ExtResource( 1 )
 
 [node name="VelocityArrow" parent="." instance=ExtResource( 5 )]
-modulate = Color( 0, 1, 0.0392157, 1 )
+visible = false
+modulate = Color( 0, 1, 0, 1 )
 script = ExtResource( 3 )
 target = NodePath("..")
 

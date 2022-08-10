@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Main.gd"
 }, {
+"base": "VSplitContainer",
+"class": "Options",
+"language": "GDScript",
+"path": "res://Scripts/Options.gd"
+}, {
 "base": "Path2D",
 "class": "SmoothPath",
 "language": "GDScript",
@@ -39,13 +44,14 @@ _global_script_class_icons={
 "Connection": "",
 "ConnectorLine": "",
 "Main": "",
+"Options": "",
 "SmoothPath": ""
 }
 
 [application]
 
 config/name="ProgrammingGame"
-run/main_scene="res://Scenes/LevelSelect.tscn"
+run/main_scene="res://Scenes/MainMenu.tscn"
 boot_splash/bg_color=Color( 0.160784, 0.160784, 0.160784, 1 )
 config/icon="res://icon.png"
 

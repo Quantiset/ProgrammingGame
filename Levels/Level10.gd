@@ -1,16 +1,18 @@
 extends Main
 
+var iter := 0
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if $Block.position.is_equal_approx($Pointer.position):
+		set_process(false)
+		yield(get_tree().create_timer(1), "timeout")
+		match iter:
+			0, 1:
+				$Pointer.position = $Pointer.position.rotated(-PI/2)
+				set_process(true)
+			2:
+				$CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level10Code/AnimationPlayer.play("Condense")
+				yield($CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level10Code/AnimationPlayer, "animation_finished")
+				yield(get_tree().create_timer(2), "timeout")
+				set_level_complete(10)
+		iter += 1

@@ -1,7 +1,10 @@
 extends KinematicBody2D
+tool
 
 export (Color) var color = Color(1,1,1) setget set_color
 export (Color) var edge_color = Color(1,1,1) setget set_edge_color
+
+export (bool) var point_globally := false setget set_point_globally
 
 var is_mouse_hovered := false
 
@@ -17,11 +20,12 @@ func _input(event):
 			_on_Ball_mouse_exited()
 
 func _process(delta):
-	if $VelocityArrow.get_point_count() > 0:
+	if $VelocityArrow.get_point_count() > 0 and not point_globally:
 		$VelocityArrow.remove_point(1)
 		$VelocityArrow.append_point(end_pos - position)
 
 func set_pos(val: Vector2, anim := true):
+	$VelocityArrow.show()
 	$VelocityArrow.clear_points()
 	$VelocityArrow.append_point(Vector2())
 	$VelocityArrow.append_point(val)
@@ -42,6 +46,12 @@ func set_edge_color(val: Color):
 	$Sprite.material.set_shader_param("line_color", val)
 	edge_color = val
 
+func set_point_globally(val: bool):
+	point_globally = val
+	$VelocityArrow.set_as_toplevel(val)
+	$VelocityArrow.modulate = (
+		Color.yellow if point_globally else Color.green
+	)
 
 func _on_Ball_mouse_entered():
 	is_mouse_hovered = true

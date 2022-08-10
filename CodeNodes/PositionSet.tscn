@@ -5,6 +5,8 @@
 
 [node name="PositionSet" groups=["Setter"] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+type = 0
+line = NodePath("")
 
 [node name="Sprite" parent="." index="0"]
 margin_bottom = 160.0

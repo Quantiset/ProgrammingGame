@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/LevelSelectIcon.gd" type="Script" id=1]
 [ext_resource path="res://Assets/LevelSelect.png" type="Texture" id=2]
 [ext_resource path="res://Assets/LevelSelectBorder.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Arrow.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Arrow.png" type="Texture" id=5]
+[ext_resource path="res://Assets/fonts/Neon Zone/Neon Zone.otf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 31
+font_data = ExtResource( 6 )
 
 [node name="LevelSelectIcon" type="TextureRect"]
 margin_right = 182.0
@@ -32,6 +37,7 @@ margin_left = 39.0
 margin_top = 39.0
 margin_right = 140.0
 margin_bottom = 140.0
+custom_fonts/font = SubResource( 1 )
 text = "3"
 align = 1
 valign = 1

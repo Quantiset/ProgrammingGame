@@ -1,13 +1,14 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/TilePlus.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/MenuIcon.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/StartButton.gd" type="Script" id=5]
-[ext_resource path="res://Assets/fonts/SourceCodePro-Black.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/fonts/Neon Zone/Neon Zone.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://Assets/ResetArrow.png" type="Texture" id=7]
 [ext_resource path="res://Assets/QuestionMark.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Audio.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxTexture" id=4]
 modulate_color = Color( 0, 0, 0, 1 )
@@ -23,7 +24,8 @@ modulate_color = Color( 0, 0, 0, 1 )
 [sub_resource type="StyleBoxEmpty" id=9]
 
 [sub_resource type="DynamicFont" id=14]
-size = 44
+size = 60
+outline_size = 1
 font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=10]
@@ -56,6 +58,36 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1.5, 1.5, 1.5, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "BringEnter"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -109,12 +141,16 @@ tracks/0/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=24]
 
+[sub_resource type="StyleBoxEmpty" id=25]
+
 [sub_resource type="Environment" id=3]
 background_mode = 4
 glow_enabled = true
 glow_bloom = 0.1
 glow_blend_mode = 0
 glow_bicubic_upscale = true
+adjustment_enabled = true
+adjustment_contrast = 1.11
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -180,7 +216,19 @@ render_target_update_mode = 3
 [node name="Top" type="ColorRect" parent="CanvasLayer"]
 margin_right = 1920.0
 margin_bottom = 80.0
-color = Color( 0.137255, 0.137255, 0.137255, 1 )
+color = Color( 0.054902, 0.054902, 0.0588235, 1 )
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/Top"]
+position = Vector2( -722, 31 )
+points = PoolVector2Array( 761, 49, 1481, 49 )
+width = 5.0
+default_color = Color( 0.501961, 0.509804, 0.545098, 1 )
+
+[node name="Line2D2" type="Line2D" parent="CanvasLayer/Top"]
+position = Vector2( 238, 3 )
+points = PoolVector2Array( 841, 77, 1682, 77 )
+width = 5.0
+default_color = Color( 0.501961, 0.509804, 0.545098, 1 )
 
 [node name="StartButton" type="Button" parent="CanvasLayer"]
 margin_left = 800.0
@@ -212,10 +260,23 @@ custom_fonts/font = SubResource( 14 )
 text = "Run"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/StartButton"]
 anims/RESET = SubResource( 10 )
 anims/dilate = SubResource( 11 )
+
+[node name="BringEnter" type="AnimationPlayer" parent="CanvasLayer/StartButton"]
+anims/BringEnter = SubResource( 26 )
+anims/RESET = SubResource( 27 )
+
+[node name="Enter" type="Label" parent="CanvasLayer/StartButton"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 163.0
+margin_right = 240.0
+margin_bottom = 177.0
+text = "Or press [Enter] to run!"
+align = 1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 margin_right = 2000.0
@@ -292,6 +353,25 @@ color = Color( 0.713726, 0.101961, 0.101961, 0.447059 )
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="AudioButton" type="Button" parent="CanvasLayer"]
+margin_left = 1680.0
+margin_right = 1760.0
+margin_bottom = 80.0
+custom_styles/hover = SubResource( 25 )
+custom_styles/pressed = SubResource( 25 )
+custom_styles/focus = SubResource( 25 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AudioButton"]
+modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
+margin_right = 80.0
+margin_bottom = 80.0
+texture = ExtResource( 9 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
@@ -346,3 +426,4 @@ points = PoolVector2Array( 0, 0, 0, 0 )
 [connection signal="pressed" from="CanvasLayer/ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/HelpButton" to="." method="_on_HelpButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/AudioButton" to="." method="_on_AudioButton_pressed"]

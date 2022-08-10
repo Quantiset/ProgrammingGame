@@ -14,6 +14,7 @@ func set_type(val: int):
 	match val:
 		Types.Sin:
 			$Label.text = "Sin"
+			help_info = "Returns a [color=yellow]number[/color] between 0 and 1 and smoothly cycles as input [color=yellow]number[/color] increases"
 		Types.Cos:
 			$Label.text = "Cos"
 		Types.Tan:

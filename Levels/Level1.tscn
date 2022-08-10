@@ -29,10 +29,6 @@ mouse_filter = 2
 [node name="Level1Code" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport" index="0" instance=ExtResource( 2 )]
 mouse_filter = 2
 
-[node name="StartButton" parent="CanvasLayer" index="1"]
-margin_left = 844.0
-margin_right = 1084.0
-
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" index="2"]
 margin_right = 1920.0
 margin_bottom = 1079.0
@@ -90,6 +86,10 @@ text = "
    Try setting the position node to a position that centers it on the white outline"
 autowrap = true
 
+[node name="StartButton" parent="CanvasLayer" index="3"]
+margin_left = 844.0
+margin_right = 1084.0
+
 [node name="Pointer" parent="." index="10" instance=ExtResource( 5 )]
 position = Vector2( 240, 0 )
 
@@ -101,5 +101,6 @@ margin_bottom = 10.0
 text = "The red block needs to travel here!"
 
 [node name="Block" parent="." index="12" instance=ExtResource( 3 )]
+point_globally = true
 
 [connection signal="finished" from="CanvasLayer/CenterContainer/VBoxContainer/VideoPlayer" to="." method="_on_VideoPlayer_finished"]

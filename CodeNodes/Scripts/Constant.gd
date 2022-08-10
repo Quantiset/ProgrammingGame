@@ -3,7 +3,7 @@ extends CodeNode
 export (float) var set_value := 99
 
 func _ready():
-	help_info = "Provides a constant number"
+	help_info = "Provides a [color=yellow]constant[/color] number"
 	if not is_equal_approx(set_value, 99):
 		$TextEdit.text = str(set_value)
 		$TextEdit.readonly = true

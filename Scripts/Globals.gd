@@ -11,7 +11,7 @@ var SAVE_DICT := {
 }
 var save_dict := SAVE_DICT.duplicate()
 
-var show_fps := false
+var show_fps := false setget set_show_fps
 var fps_label: Label
 
 func _ready():
@@ -54,3 +54,7 @@ func save():
 	f.open(SAVE_FILE, f.WRITE_READ)
 	f.store_var(save_dict)
 	f.close()
+
+func set_show_fps(val):
+	show_fps = val
+	fps_label.visible = val

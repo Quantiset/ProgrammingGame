@@ -76,9 +76,10 @@ func _on_HSplitContainer_unhandled_input(event):
 func code_node_connected(line):
 	$CanvasLayer/StartButton/AnimationPlayer.play("dilate")
 
-
-
 func _on_StartButton_pressed():
+	if $CanvasLayer/StartButton.type == $CanvasLayer/StartButton.Types.NextLevel:
+		Globals.set_level_complete(level_complete_idx)
+		Globals.change_scene("res://Scenes/LevelSelect.tscn")
 	if $CanvasLayer/StartButton.type == $CanvasLayer/StartButton.Types.Custom:
 		for node in get_tree().get_nodes_in_group("CodeNode"):
 			if node.has_method("start_logic_chain"):
@@ -91,14 +92,7 @@ func _on_StartButton_pressed():
 func parse(anim := true):
 	for cnode in get_tree().get_nodes_in_group("Setter"):
 		if cnode.has_method("parse"): 
-			for obj in get_tree().get_nodes_in_group("Moveable"):
-				if cnode.incoming_lines.has(0):
-					for node in get_tree().get_nodes_in_group("CodeNode"):
-						node.selected_object = obj
-					var pos = (cnode.incoming_lines[0].get_value() * 80)
-					cnode.selected_object.set_pos(pos, anim)
-					cnode.get_node("Position").show()
-					cnode.get_node("Position").text = str(pos / 80)
+			cnode.parse(anim)
 
 
 func _on_ResetButton_pressed():
@@ -113,3 +107,14 @@ func _on_HelpButton_pressed():
 	$CanvasLayer/HelpButton/ColorRect.visible = not \
 			$CanvasLayer/HelpButton/ColorRect.visible
 	emit_signal("help_clicked")
+
+var level_complete_idx := 0
+func set_level_complete(_level_complete_idx):
+	level_complete_idx = _level_complete_idx
+	$CanvasLayer/StartButton.type = $CanvasLayer/StartButton.Types.NextLevel
+
+func _on_AudioButton_pressed():
+	GlobalAudioStream.playing = not GlobalAudioStream.playing
+	$CanvasLayer/AudioButton/TextureRect.texture = \
+		preload("res://Assets/AudioX.png") if $CanvasLayer/AudioButton/TextureRect.texture == \
+		preload("res://Assets/Audio.png") else preload("res://Assets/Audio.png")

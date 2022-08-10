@@ -13,8 +13,7 @@ func _process(delta):
 		$CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level1Code/AnimationPlayer.play("End")
 		yield($CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level1Code/AnimationPlayer, "animation_finished")
 		yield(get_tree().create_timer(2), "timeout")
-		Globals.set_level_complete(1)
-		Globals.change_scene("res://Scenes/LevelSelect.tscn")
+		set_level_complete(1)
 
 func _on_VideoPlayer_finished():
 	$CanvasLayer/CenterContainer/VBoxContainer/VideoPlayer.play()

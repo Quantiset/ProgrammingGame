@@ -25,6 +25,7 @@ modulate = Color( 0.177762, 0.867188, 0.057587, 1 )
 color = 1
 
 [node name="Label" parent="." index="4"]
+margin_right = 149.0
 text = "Deconstruct
 Vector"
 

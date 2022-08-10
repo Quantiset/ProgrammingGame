@@ -47,8 +47,10 @@ script = ExtResource( 2 )
 color = 3
 
 [node name="Label" parent="." index="5"]
-margin_left = 61.0
+margin_left = 27.0
 margin_top = 113.0
-margin_right = 163.0
-margin_bottom = 162.0
-text = "Or "
+margin_right = 128.0
+margin_bottom = 169.0
+bbcode_enabled = true
+bbcode_text = "[center]Or"
+text = "Or"

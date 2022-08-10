@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Level12.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Level12Code.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Pointer.tscn" type="PackedScene" id=5]
+
+[node name="Level12" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Level12Code" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport" index="0" instance=ExtResource( 4 )]
+
+[node name="Polygon2D" parent="CanvasLayer/StartButton" index="0"]
+color = Color( 0.121569, 0.592157, 0.152941, 0.72549 )
+
+[node name="Block" parent="." index="10" instance=ExtResource( 3 )]
+
+[node name="Block2" parent="." index="11" instance=ExtResource( 3 )]
+position = Vector2( 160, 0 )
+
+[node name="Block3" parent="." index="12" instance=ExtResource( 3 )]
+position = Vector2( 160, -160 )
+
+[node name="Block4" parent="." index="13" instance=ExtResource( 3 )]
+position = Vector2( 0, -160 )
+
+[node name="Block5" parent="." index="14" instance=ExtResource( 3 )]
+position = Vector2( -160, -160 )
+
+[node name="Block6" parent="." index="15" instance=ExtResource( 3 )]
+position = Vector2( -160, 0 )
+
+[node name="BBlock" parent="." index="16" instance=ExtResource( 3 )]
+modulate = Color( 0, 0.27451, 1, 1 )
+position = Vector2( -160, 161 )
+
+[node name="Block8" parent="." index="17" instance=ExtResource( 3 )]
+position = Vector2( 0, 161 )
+
+[node name="Block9" parent="." index="18" instance=ExtResource( 3 )]
+position = Vector2( 160, 161 )
+
+[node name="Block10" parent="." index="19" instance=ExtResource( 3 )]
+position = Vector2( 320, 161 )
+
+[node name="Block11" parent="." index="20" instance=ExtResource( 3 )]
+position = Vector2( 320, 1 )
+
+[node name="Block12" parent="." index="21" instance=ExtResource( 3 )]
+position = Vector2( 320, -159 )
+
+[node name="Block13" parent="." index="22" instance=ExtResource( 3 )]
+position = Vector2( 320, -319 )
+
+[node name="Block14" parent="." index="23" instance=ExtResource( 3 )]
+position = Vector2( 160, -319 )
+
+[node name="Block15" parent="." index="24" instance=ExtResource( 3 )]
+position = Vector2( 0, -319 )
+
+[node name="Block16" parent="." index="25" instance=ExtResource( 3 )]
+position = Vector2( -160, -319 )
+
+[node name="Block17" parent="." index="26" instance=ExtResource( 3 )]
+position = Vector2( -320, -319 )
+
+[node name="Block18" parent="." index="27" instance=ExtResource( 3 )]
+position = Vector2( -320, -157 )
+
+[node name="Block19" parent="." index="28" instance=ExtResource( 3 )]
+position = Vector2( -320, 3 )
+
+[node name="Block20" parent="." index="29" instance=ExtResource( 3 )]
+position = Vector2( -320, 163 )
+
+[node name="GBlock" parent="." index="30" instance=ExtResource( 3 )]
+modulate = Color( 0, 1, 0.156863, 1 )
+position = Vector2( -320, 323 )
+
+[node name="Block22" parent="." index="31" instance=ExtResource( 3 )]
+position = Vector2( -160, 323 )
+
+[node name="Block23" parent="." index="32" instance=ExtResource( 3 )]
+position = Vector2( 0, 323 )
+
+[node name="Block24" parent="." index="33" instance=ExtResource( 3 )]
+position = Vector2( 160, 323 )
+
+[node name="Block25" parent="." index="34" instance=ExtResource( 3 )]
+position = Vector2( 320, 323 )
+
+[node name="BPointer" parent="." index="35" instance=ExtResource( 5 )]
+modulate = Color( 0.12549, 0, 1, 1 )
+
+[node name="GPointer" parent="." index="36" instance=ExtResource( 5 )]
+modulate = Color( 0.243137, 1, 0, 1 )
+position = Vector2( -320, -320 )

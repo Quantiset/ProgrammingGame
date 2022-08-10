@@ -1,4 +1,5 @@
 extends VSplitContainer
+class_name Options
 
 const SAVE_FILE := "user://options.save"
 var save_dict := {}
@@ -13,6 +14,9 @@ func _ready():
 	
 	for button_name in save_dict:
 		_on_CheckButton_toggled(save_dict[button_name], button_name)
+
+func _process(delta):
+	$CanvasLayer/ParallaxLayer.motion_offset += Vector2(0.2, 0.5) * delta * 50
 
 func _on_CheckButton_toggled(button_pressed, button_name):
 	var button = find_node(button_name + "Button")
@@ -30,3 +34,6 @@ func save():
 	f.open(SAVE_FILE, f.WRITE_READ)
 	f.store_var(save_dict)
 	f.close()
+
+func _on_ExitButton_pressed():
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")

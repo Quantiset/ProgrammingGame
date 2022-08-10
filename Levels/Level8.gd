@@ -21,5 +21,4 @@ func update_step():
 			$CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level8Code/AnimationPlayer.play("End")
 			yield($CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level8Code/AnimationPlayer, "animation_finished")
 			yield(get_tree().create_timer(2), "timeout")
-			Globals.set_level_complete(8)
-			Globals.change_scene("res://Scenes/LevelSelect.tscn")
+			set_level_complete(8)

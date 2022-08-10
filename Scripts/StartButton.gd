@@ -4,7 +4,8 @@ tool
 enum Types {
 	Once,
 	Process,
-	Custom
+	Custom,
+	NextLevel
 }
 
 export (Types) var type := Types.Once setget set_type
@@ -23,4 +24,10 @@ func set_type(val: int):
 			$Polygon2D.color = Color("b91f2197")
 			$Label.text = "Start Logic"
 			$Line2D.modulate.a = 1
+		Types.NextLevel:
+			$Polygon2D.color = Color(0.121569, 0.592157, 0.458824, 0.72549)
+			$Label.text = "Next Level"
+			$Line2D.modulate.a = 1
+			if $Enter.modulate.a < 0.9:
+				$BringEnter.play("BringEnter")
 	type = val

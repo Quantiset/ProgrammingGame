@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Scraping Brick_bentu.mp3-ad016fc71997ad31748b9774d3d5d38d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Scraping Brick_bentu.mp3"
+dest_files=[ "res://.import/Scraping Brick_bentu.mp3-ad016fc71997ad31748b9774d3d5d38d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
