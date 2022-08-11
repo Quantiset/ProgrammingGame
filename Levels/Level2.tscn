@@ -18,6 +18,7 @@ margin_bottom = 4555.0
 [node name="Level2Code" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport" index="0" instance=ExtResource( 4 )]
 
 [node name="Block" parent="." index="10" instance=ExtResource( 7 )]
+point_globally = true
 
 [node name="Pointer" parent="." index="11" instance=ExtResource( 3 )]
 position = Vector2( 320, -240 )

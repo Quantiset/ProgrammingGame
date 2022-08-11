@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/LevelSelectIcon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/LevelSelect.gd" type="Script" id=3]
 [ext_resource path="res://Assets/fonts/Neon Zone/Neon Zone.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Exit.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/MenuButton.gd" type="Script" id=6]
+[ext_resource path="res://Assets/fonts/Neon Zone/Neon Zone Italic.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/MenuButton.png" type="Texture" id=8]
+[ext_resource path="res://Assets/MenuButtonEnabled.png" type="Texture" id=9]
 
 [sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
@@ -138,6 +142,10 @@ shader = SubResource( 4 )
 size = 107
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 7 )
+
 [node name="LevelSelect" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -171,7 +179,6 @@ size_flags_vertical = 5
 columns = 9
 
 [node name="LevelSelectIcon1" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
-visible = false
 size_flags_vertical = 0
 
 [node name="LevelSelectIcon2" parent="ColorRect/GridContainer" instance=ExtResource( 1 )]
@@ -328,4 +335,29 @@ text = "Levels"
 align = 1
 valign = 2
 
+[node name="SandboxButton" type="TextureButton" parent="."]
+margin_left = 720.0
+margin_top = 844.0
+margin_right = 1200.0
+margin_bottom = 1004.0
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="SandboxButton"]
+margin_right = 480.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 5 )
+text = "Sandbox"
+align = 1
+valign = 1
+
+[node name="Tween" type="Tween" parent="SandboxButton"]
+
 [connection signal="pressed" from="ColorRect2/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="mouse_entered" from="SandboxButton" to="SandboxButton" method="_on_StartButton_mouse_entered"]
+[connection signal="mouse_exited" from="SandboxButton" to="SandboxButton" method="_on_StartButton_mouse_exited"]
+[connection signal="pressed" from="SandboxButton" to="SandboxButton" method="button_pressed" binds= [ "Sandbox" ]]

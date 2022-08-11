@@ -1,18 +1,18 @@
 extends CodeNode
 
+onready var level: int = int(name.trim_prefix("LevelSelectIcon"))
 
 func _ready():
-	$Label.text = name.trim_prefix("LevelSelectIcon")
+	$Label.text = str(level)
+	if Globals.levels.has(level):
+		modulate = Globals.levels[level].color
 
 func _on_LevelSelect_gui_input(event):
 	if event is InputEventMouseButton:
 		match event.button_index:
 			BUTTON_LEFT:
 				if event.is_pressed():
-					pass
-					var f := File.new()
-					if f.file_exists("res://Levels/Level"+$Label.text+".tscn"):
-						Globals.change_scene("res://Levels/Level"+$Label.text+".tscn")
+					Globals.to_level(level)
 
 
 func _on_LevelSelectIcon_mouse_entered():

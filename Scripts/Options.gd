@@ -26,6 +26,12 @@ func _on_CheckButton_toggled(button_pressed, button_name):
 			OS.vsync_enabled = button_pressed
 		"FPS":
 			Globals.show_fps = button_pressed
+		"Mute":
+			# must do if checks or else set playing fucks with audio for some reason
+			if button_pressed:
+				GlobalAudioStream.playing = false
+			elif not GlobalAudioStream.playing:
+				GlobalAudioStream.playing = true
 	save_dict[button_name] = button_pressed
 	save()
 

@@ -43,6 +43,12 @@ func _ready():
 	$CanvasLayer/ResetButton.show()
 	$CanvasLayer/MenuButton.show()
 	
+	if not GlobalAudioStream.playing:
+		print("HI")
+#		_on_AudioButton_pressed()
+#		GlobalAudioStream.playing = false
+	
+	
 	for code_node in get_tree().get_nodes_in_group("CodeNode"):
 		code_node.selected_object = $Block
 	

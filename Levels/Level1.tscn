@@ -29,6 +29,12 @@ mouse_filter = 2
 [node name="Level1Code" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport" index="0" instance=ExtResource( 2 )]
 mouse_filter = 2
 
+[node name="Line2D" parent="CanvasLayer/Top" index="0"]
+points = PoolVector2Array( 722, 49, 1525, 49 )
+
+[node name="Line2D2" parent="CanvasLayer/Top" index="1"]
+points = PoolVector2Array( 882, 77, 1682, 77 )
+
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" index="2"]
 margin_right = 1920.0
 margin_bottom = 1079.0

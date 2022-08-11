@@ -207,6 +207,12 @@ margin_right = 598.0
 margin_bottom = 84.0
 text = "Show FPS"
 
+[node name="MuteButton" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 88.0
+margin_right = 598.0
+margin_bottom = 128.0
+text = "Mute Audio"
+
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 606.0
 margin_right = 609.0
@@ -253,3 +259,4 @@ texture = ExtResource( 3 )
 [connection signal="pressed" from="ColorRect/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/VSyncButton" to="." method="_on_CheckButton_toggled" binds= [ "VSync" ]]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/FPSButton" to="." method="_on_CheckButton_toggled" binds= [ "FPS" ]]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/MuteButton" to="." method="_on_CheckButton_toggled" binds= [ "Mute" ]]

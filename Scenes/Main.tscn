@@ -220,7 +220,7 @@ color = Color( 0.054902, 0.054902, 0.0588235, 1 )
 
 [node name="Line2D" type="Line2D" parent="CanvasLayer/Top"]
 position = Vector2( -722, 31 )
-points = PoolVector2Array( 761, 49, 1481, 49 )
+points = PoolVector2Array( 722, 49, 1481, 49 )
 width = 5.0
 default_color = Color( 0.501961, 0.509804, 0.545098, 1 )
 

@@ -25,8 +25,9 @@ func _physics_process(delta):
 		block_prev = $Block.position
 		
 		for point in required_points.duplicate():
-			if ($Block.position - point).length_squared() < 0.15:
+			if ($Block.position - point).length_squared() < 2:
 				required_points.erase(point)
+				print()
 		
 		if required_points.size() == 2:
 			yield(get_tree().create_timer(2), "timeout")

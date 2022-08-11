@@ -21,5 +21,7 @@ func button_pressed(button_name):
 			get_tree().change_scene("res://Scenes/LevelSelect.tscn")
 		"Quit":
 			get_tree().quit()
+		"Sandbox":
+			get_tree().change_scene("res://Levels/Sandbox.tscn")
 
 

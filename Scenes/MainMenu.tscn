@@ -279,8 +279,12 @@ scale = Vector2( 31, 17 )
 texture = ExtResource( 6 )
 
 [node name="Options" parent="." instance=ExtResource( 7 )]
-anchor_top = 3.03704
-anchor_bottom = 4.03704
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 128.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 5 )

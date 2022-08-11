@@ -2,7 +2,10 @@ extends Control
 
 func _ready():
 	for i in range(Globals.save_dict.level):
-		get_node("ColorRect/GridContainer/LevelSelectIcon"+str(i+1)).show()
+		i += 1
+		if not Globals.levels.has(i):
+			break
+		get_node("ColorRect/GridContainer/LevelSelectIcon"+str(i)).show()
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
