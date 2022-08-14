@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://CodeNodes/CodeNode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Arrow.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Arrow.gd" type="Script" id=3]
+[ext_resource path="res://CodeNodes/Scripts/IF.gd" type="Script" id=4]
+
+[node name="IF" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.0313726, 0.592157, 0.905882, 1 )
+
+[node name="OutArrow1" parent="." index="1"]
+modulate = Color( 0.118963, 0.112579, 0.929688, 1 )
+color = 3
+
+[node name="InArrow2" type="TextureRect" parent="." index="3"]
+margin_left = -4.0
+margin_top = 152.0
+margin_right = 18.0
+margin_bottom = 180.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+script = ExtResource( 3 )
+
+[node name="Label" parent="." index="4"]
+text = "IF"
+
+[node name="a" type="Label" parent="." index="10"]
+margin_left = 14.0
+margin_top = 80.0
+margin_right = 54.0
+margin_bottom = 94.0
+text = "a"
+
+[node name="equals" type="Label" parent="." index="11"]
+margin_left = 14.0
+margin_top = 80.0
+margin_right = 143.0
+margin_bottom = 94.0
+text = "a == b"
+align = 2
+
+[node name="b" type="Label" parent="." index="12"]
+margin_left = 14.0
+margin_top = 160.0
+margin_right = 54.0
+margin_bottom = 174.0
+text = "b"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/fonts/Neon Zone/Neon Zone.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Options.gd" type="Script" id=2]
@@ -7,6 +7,24 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 107
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 43
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 17
+outline_size = 1
+outline_color = Color( 0.278431, 0.254902, 0.4, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 27
 font_data = ExtResource( 1 )
 
 [sub_resource type="Shader" id=4]
@@ -184,9 +202,9 @@ margin_bottom = 858.0
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Panel"]
 margin_left = 4.0
-margin_right = 1784.0
+margin_right = 1790.0
 margin_bottom = 880.0
-rect_min_size = Vector2( 1720, 0 )
+rect_min_size = Vector2( 1820, 0 )
 color = Color( 0, 0, 0, 0.439216 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
@@ -198,20 +216,30 @@ size_flags_horizontal = 3
 [node name="VSyncButton" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 margin_right = 598.0
 margin_bottom = 40.0
+custom_fonts/font = SubResource( 8 )
 pressed = true
 text = "VSync"
 
 [node name="FPSButton" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 margin_top = 44.0
 margin_right = 598.0
 margin_bottom = 84.0
 text = "Show FPS"
 
 [node name="MuteButton" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 598.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 8 )
+text = "Mute Audio"
+
+[node name="FullscreenButton" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 88.0
 margin_right = 598.0
 margin_bottom = 128.0
-text = "Mute Audio"
+custom_fonts/font = SubResource( 8 )
+text = "Fullscreen"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 606.0
@@ -237,6 +265,50 @@ margin_right = 1820.0
 margin_bottom = 858.0
 size_flags_horizontal = 3
 
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+margin_right = 598.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 5 )
+text = "Credits"
+align = 1
+
+[node name="Label2" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+margin_top = 51.0
+margin_right = 598.0
+margin_bottom = 175.0
+custom_fonts/italics_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 7 )
+bbcode_enabled = true
+bbcode_text = "Game made by 
+    [rainbow freq=0.2 sat=1 val=2]Quantiset[/rainbow][i]#8447[/i], 
+	[rainbow freq=0.2 sat=1 val=2]Riley[/rainbow][i]#9219[/i], 
+	[rainbow freq=0.2 sat=1 val=2]Essential Oil Dad[/rainbow][i]#5659[/i]"
+text = "Game made by 
+    Quantiset#8447, 
+	Riley#9219, 
+	Essential Oil Dad#5659"
+fit_content_height = true
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+margin_top = 179.0
+margin_right = 598.0
+margin_bottom = 229.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label3" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+margin_top = 233.0
+margin_right = 598.0
+margin_bottom = 357.0
+custom_fonts/normal_font = SubResource( 7 )
+bbcode_enabled = true
+bbcode_text = "Music: [wave][rainbow freq=0.2 sat=1 val=2]\"Space Dust\"[/rainbow][/wave] - Karl Casey
+
+Made using the [wave][color=#1bc6e3]Godot Game Engine[/color][/wave] for the 3[color=#1241b4]blue[/color]1[color=#723b09]brown[/color] SOME2"
+text = "Music: \"Space Dust\" - Karl Casey
+
+Made using the Godot Game Engine for the 3blue1brown SOME2"
+fit_content_height = true
+
 [node name="CanvasLayer" type="ParallaxBackground" parent="."]
 layer = -1
 
@@ -260,3 +332,4 @@ texture = ExtResource( 3 )
 [connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/VSyncButton" to="." method="_on_CheckButton_toggled" binds= [ "VSync" ]]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/FPSButton" to="." method="_on_CheckButton_toggled" binds= [ "FPS" ]]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/MuteButton" to="." method="_on_CheckButton_toggled" binds= [ "Mute" ]]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/FullscreenButton" to="." method="_on_CheckButton_toggled" binds= [ "Fullscreen" ]]

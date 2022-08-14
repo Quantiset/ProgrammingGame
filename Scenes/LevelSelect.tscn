@@ -331,7 +331,7 @@ texture = ExtResource( 2 )
 margin_right = 1920.0
 margin_bottom = 160.0
 custom_fonts/font = SubResource( 3 )
-text = "Levels"
+text = "Puzzles"
 align = 1
 valign = 2
 

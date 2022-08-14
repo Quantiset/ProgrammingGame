@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/TilePlus.png" type="Texture" id=2]
@@ -143,6 +143,68 @@ tracks/0/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=25]
 
+[sub_resource type="DynamicFont" id=28]
+size = 56
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=29]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0.701961, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "dilate"
+length = 4.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.701961, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0.701961, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4 )
+}
+
 [sub_resource type="Environment" id=3]
 background_mode = 4
 glow_enabled = true
@@ -231,6 +293,7 @@ width = 5.0
 default_color = Color( 0.501961, 0.509804, 0.545098, 1 )
 
 [node name="StartButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
 margin_left = 800.0
 margin_right = 1040.0
 margin_bottom = 160.0
@@ -373,6 +436,21 @@ margin_right = 80.0
 margin_bottom = 80.0
 rect_scale = Vector2( 0.33, 0.33 )
 texture = ExtResource( 9 )
+
+[node name="LevelName" type="RichTextLabel" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.701961 )
+margin_top = 1016.0
+margin_right = 1920.0
+margin_bottom = 1133.0
+custom_fonts/normal_font = SubResource( 28 )
+bbcode_enabled = true
+bbcode_text = "[center]I - The awakening[/center]"
+text = "I - The awakening"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/LevelName"]
+autoplay = "dilate"
+anims/RESET = SubResource( 29 )
+anims/dilate = SubResource( 30 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

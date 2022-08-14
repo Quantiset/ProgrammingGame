@@ -32,6 +32,8 @@ func _on_CheckButton_toggled(button_pressed, button_name):
 				GlobalAudioStream.playing = false
 			elif not GlobalAudioStream.playing:
 				GlobalAudioStream.playing = true
+		"Fullscreen":
+			OS.window_fullscreen = button_pressed
 	save_dict[button_name] = button_pressed
 	save()
 

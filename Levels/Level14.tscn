@@ -1,32 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Level14Code.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Levels/Level14.gd" type="Script" id=5]
-[ext_resource path="res://Assets/Circle.png" type="Texture" id=6]
+[ext_resource path="res://Levels/Level14.gd" type="Script" id=4]
 
 [node name="Level14" instance=ExtResource( 1 )]
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="Level14Code" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport" index="0" instance=ExtResource( 3 )]
 
-[node name="PositionGet" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code" index="6"]
-line = NodePath("../../../../../../../Green")
-
-[node name="PositionGet2" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code" index="7"]
-line = NodePath("../../../../../../../Green")
-
-[node name="PositionGet3" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code" index="8"]
-line = NodePath("../../../../../../../Green")
-
-[node name="PositionSet" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code" index="11"]
+[node name="PositionSet" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code" index="4"]
 type = 1
 line = NodePath("../../../../../../../Green")
 
-[node name="PositionSet2" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code" index="13"]
-line = NodePath("../../../../../../../Red")
+[node name="PositionGet2" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code" index="5"]
+line = NodePath("../../../../../../../Green")
+
+[node name="PositionGet3" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code" index="6"]
+line = NodePath("../../../../../../../Green")
+
+[node name="PositionGet4" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code" index="7"]
+line = NodePath("../../../../../../../Green")
 
 [node name="StartButton" parent="CanvasLayer" index="2"]
 type = 1
@@ -37,7 +32,32 @@ color = Color( 0.533333, 0.592157, 0.121569, 0.72549 )
 [node name="Label" parent="CanvasLayer/StartButton" index="2"]
 text = "Start >|"
 
-[node name="Green" parent="." index="10" instance=ExtResource( 2 )]
+[node name="ColorRect" parent="CanvasLayer" index="3"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="X" parent="." index="10" instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 0.560784 )
+points = PoolVector2Array( 0, 0, 320, 0 )
+width = 5.0
+
+[node name="Head" parent="X" index="0"]
+position = Vector2( 317, -3.05176e-05 )
+rotation = -6.27624
+scale = Vector2( 2, 2 )
+
+[node name="Y" parent="." index="11" instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 0.560784 )
+points = PoolVector2Array( 0, 0, 0, -80 )
+width = 5.0
+
+[node name="Head" parent="Y" index="0"]
+position = Vector2( 2.38419e-07, -79.9993 )
+rotation = -1.57149
+scale = Vector2( 2, 2 )
+
+[node name="Green" parent="." index="12" instance=ExtResource( 2 )]
 modulate = Color( 0.0784314, 0.854902, 0.0980392, 1 )
 points = PoolVector2Array( 0, 0, 320, -80 )
 width = 5.0
@@ -47,35 +67,24 @@ position = Vector2( 317, -80 )
 rotation = -0.332627
 scale = Vector2( 2, 2 )
 
-[node name="Red" parent="." index="11" instance=ExtResource( 2 )]
-modulate = Color( 0.854902, 0.168627, 0.0784314, 1 )
-points = PoolVector2Array( 0, 0, 79, -20 )
+[node name="Label" type="Label" parent="." index="13"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Circle" type="Line2D" parent="." index="14"]
+self_modulate = Color( 1, 1, 1, 0.407843 )
+position = Vector2( 7.62939e-06, 1.52588e-05 )
 width = 5.0
+default_color = Color( 1, 1, 1, 1 )
 
-[node name="Head" parent="Red" index="0"]
-position = Vector2( 76.9999, -20 )
-rotation = -0.332627
-scale = Vector2( 2, 2 )
-
-[node name="Block" parent="." index="12" instance=ExtResource( 4 )]
-visible = false
-
-[node name="Sprite" type="Sprite" parent="." index="13"]
-texture = ExtResource( 6 )
-
-[node name="Label" type="RichTextLabel" parent="Sprite" index="0"]
-margin_left = 80.0
-margin_top = -134.0
-margin_right = 334.0
-margin_bottom = -86.0
-bbcode_enabled = true
-bbcode_text = "[color=yellow][wave amp=20 freq=2]Scale[/wave][/color] the [color=red]red[/color] vector to have the same
-direction as the [color=green]green[/color] vector but
-but constrained to the circle's length"
-text = "Scale the red vector to have the same
-direction as the green vector but
-but constrained to the circle's length"
+[node name="Label2" type="Label" parent="Circle" index="0"]
+margin_left = 320.0
+margin_top = -320.0
+margin_right = 482.0
+margin_bottom = -306.0
+text = "A circle with a length of 5"
 
 [editable path="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code"]
+[editable path="X"]
+[editable path="Y"]
 [editable path="Green"]
-[editable path="Red"]

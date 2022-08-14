@@ -57,6 +57,7 @@ margin_top = -320.0
 margin_right = 240.0
 margin_bottom = -320.0
 locked = true
+set_value = 1.0
 
 [node name="Run" parent="." index="7" instance=ExtResource( 3 )]
 margin_left = 480.0

@@ -43,11 +43,8 @@ func _ready():
 	$CanvasLayer/ResetButton.show()
 	$CanvasLayer/MenuButton.show()
 	
-	if not GlobalAudioStream.playing:
-		print("HI")
-#		_on_AudioButton_pressed()
-#		GlobalAudioStream.playing = false
-	
+	$CanvasLayer/LevelName.bbcode_text = \
+		"[center]%s[/center]" % [Globals.levels[Globals.current_level].name]
 	
 	for code_node in get_tree().get_nodes_in_group("CodeNode"):
 		code_node.selected_object = $Block
@@ -83,23 +80,22 @@ func code_node_connected(line):
 	$CanvasLayer/StartButton/AnimationPlayer.play("dilate")
 
 func _on_StartButton_pressed():
-	if $CanvasLayer/StartButton.type == $CanvasLayer/StartButton.Types.NextLevel:
+	if get_node("%StartButton").type == get_node("%StartButton").Types.NextLevel:
 		Globals.set_level_complete(level_complete_idx)
 		Globals.change_scene("res://Scenes/LevelSelect.tscn")
-	if $CanvasLayer/StartButton.type == $CanvasLayer/StartButton.Types.Custom:
+	if get_node("%StartButton").type == get_node("%StartButton").Types.Custom:
 		for node in get_tree().get_nodes_in_group("CodeNode"):
 			if node.has_method("start_logic_chain"):
 				node.start_logic_chain()
 		return
 	parse()
-	if $CanvasLayer/StartButton.type == $CanvasLayer/StartButton.Types.Process:
+	if get_node("%StartButton").type == get_node("%StartButton").Types.Process:
 		process_parse = true
 
 func parse(anim := true):
 	for cnode in get_tree().get_nodes_in_group("Setter"):
 		if cnode.has_method("parse"): 
 			cnode.parse(anim)
-
 
 func _on_ResetButton_pressed():
 	get_tree().reload_current_scene()

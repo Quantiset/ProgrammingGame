@@ -1,11 +1,22 @@
 extends Main
 
-var time_in := 0.0
+func _ready():
+	var steps = 200
+	var step_ang = 2 * PI / steps
+	
+	for i in range(steps+1):
+		var vec = Vector2(400, 0).rotated(step_ang * i)
+		$Circle.add_point(vec)
 
 func _process(delta):
-	if is_equal_approx($Green.points[1].angle(), $Red.points[1].angle()) and \
-			$Red.points[1].length() < 81 and $Green.points[1].length() > 82 and \
-			$Red.points[1].length() > 79:
-		time_in += delta
-		if time_in > 2:
-			set_level_complete(14)
+	$X.remove_point(1)
+	$Y.remove_point(1)
+	
+	var mouse_pos: Vector2 = $Green.points[1]
+	
+	$Label.rect_position = mouse_pos / 2 + Vector2(0, -50)
+	$Label.text = "Length: " + str(stepify(mouse_pos.length() / 80, 0.1))
+	
+	$X.add_point(Vector2(mouse_pos.x,0))
+	$Y.position.x = mouse_pos.x
+	$Y.add_point(Vector2(0,mouse_pos.y))

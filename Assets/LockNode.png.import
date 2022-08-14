@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Audio.png-b110fb875c62114c90e8c3aaa069ff47.stex"
+path="res://.import/LockNode.png-6238645f12d0f0bc7ad2c4b6a2964570.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Audio.png"
-dest_files=[ "res://.import/Audio.png-b110fb875c62114c90e8c3aaa069ff47.stex" ]
+source_file="res://Assets/LockNode.png"
+dest_files=[ "res://.import/LockNode.png-6238645f12d0f0bc7ad2c4b6a2964570.stex" ]
 
 [params]
 

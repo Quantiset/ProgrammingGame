@@ -15,6 +15,7 @@ modulate_color = Color( 0.713726, 0.713726, 0.713726, 1 )
 
 [node name="Constant" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+set_value = 99.0
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.145098, 0.427451, 0.494118, 1 )

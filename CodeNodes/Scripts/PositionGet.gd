@@ -9,6 +9,7 @@ export (Type) var type = Type.Block
 export (NodePath) onready var line = line setget set_line
 
 func _ready():
+	help_info = "Returns a [color=green]Vector2[/color] of the selected object's position"
 	set_line(line)
 	yield(get_tree().create_timer(0.1), "timeout")
 

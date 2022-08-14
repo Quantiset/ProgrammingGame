@@ -86,6 +86,8 @@ func _input(event):
 				if Globals.held_line:
 					
 					if arrow_side == "In" and incoming_lines.has(arrow_index):
+						if incoming_lines[arrow_index].set:
+							break
 						incoming_lines[arrow_index].delete()
 					
 					if arrow_side == "Out":
@@ -159,6 +161,8 @@ func _moved(by: Vector2):
 
 func set_locked(val: bool):
 	$Lock.visible = val
+	$Sprite.texture = preload("res://Assets/LockNode.png") if val else\
+		preload("res://Assets/BlockTexture.png")
 	locked = val
 
 func set_length(val: int):

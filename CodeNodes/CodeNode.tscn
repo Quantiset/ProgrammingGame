@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/BlockTexture.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/CodeNode.gd" type="Script" id=2]
@@ -11,6 +11,15 @@
 [ext_resource path="res://Assets/Scraping Brick_bentu.mp3" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="Theme" id=7]
+VScrollBar/styles/scroll = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 27
 font_data = ExtResource( 8 )
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -42,11 +51,11 @@ light_mask = 0
 margin_right = 160.0
 margin_bottom = 240.0
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 84, 84 )
-patch_margin_left = 15
-patch_margin_top = 14
-patch_margin_right = 13
-patch_margin_bottom = 13
+region_rect = Rect2( 0, 0, 85.9892, 84.9772 )
+patch_margin_left = 32
+patch_margin_top = 44
+patch_margin_right = 48
+patch_margin_bottom = 38
 
 [node name="OutArrow1" type="TextureRect" parent="."]
 margin_left = 142.0
@@ -83,7 +92,13 @@ margin_top = 59.0
 margin_right = 130.0
 margin_bottom = 115.0
 mouse_filter = 1
+theme = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_styles/normal = SubResource( 3 )
+context_menu_enabled = false
+shortcut_keys_enabled = false
+virtual_keyboard_enabled = false
+selecting_enabled = false
 
 [node name="ColorRect" type="ColorRect" parent="TextEdit"]
 margin_right = 100.0
@@ -94,14 +109,6 @@ color = Color( 0.478431, 0.478431, 0.756863, 0.160784 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
-
-[node name="Lock" type="TextureRect" parent="."]
-visible = false
-margin_left = 117.0
-margin_top = 11.0
-margin_right = 157.0
-margin_bottom = 51.0
-texture = ExtResource( 5 )
 
 [node name="HelpLabel" type="RichTextLabel" parent="."]
 visible = false
@@ -124,5 +131,13 @@ color = Color( 0.0392157, 0.0392157, 0.0392157, 0.290196 )
 stream = ExtResource( 9 )
 volume_db = -11.261
 pitch_scale = 1.2
+
+[node name="Lock" type="TextureRect" parent="."]
+visible = false
+margin_left = 120.0
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 48.0
+texture = ExtResource( 5 )
 
 [connection signal="focus_entered" from="TextEdit" to="." method="_on_TextEdit_focus_entered"]
