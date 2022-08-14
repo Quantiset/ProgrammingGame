@@ -122,5 +122,5 @@ func set_level_complete(_level_complete_idx):
 func _on_AudioButton_pressed():
 	GlobalAudioStream.playing = not GlobalAudioStream.playing
 	$CanvasLayer/AudioButton/TextureRect.texture = \
-		preload("res://Assets/AudioX.png") if $CanvasLayer/AudioButton/TextureRect.texture == \
-		preload("res://Assets/Audio.png") else preload("res://Assets/Audio.png")
+		preload("res://Assets/audiobuttX.png") if $CanvasLayer/AudioButton/TextureRect.texture == \
+		preload("res://Assets/audiobutt.png") else preload("res://Assets/audiobutt.png")
