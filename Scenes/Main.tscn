@@ -3,12 +3,12 @@
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/TilePlus.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Arrow.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/MenuIcon.png" type="Texture" id=4]
+[ext_resource path="res://Assets/MenuButt.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/StartButton.gd" type="Script" id=5]
 [ext_resource path="res://Assets/fonts/Neon Zone/Neon Zone.otf" type="DynamicFontData" id=6]
 [ext_resource path="res://Assets/ResetArrow.png" type="Texture" id=7]
 [ext_resource path="res://Assets/QuestionMark.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Audio.png" type="Texture" id=9]
+[ext_resource path="res://Assets/audiobutt.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxTexture" id=4]
 modulate_color = Color( 0, 0, 0, 1 )
@@ -324,6 +324,7 @@ __meta__ = {
 modulate = Color( 0.392157, 0.854902, 0.352941, 1 )
 margin_right = 40.0
 margin_bottom = 40.0
+rect_scale = Vector2( 0.42, 0.42 )
 texture = ExtResource( 4 )
 
 [node name="HelpButton" type="Button" parent="CanvasLayer"]
@@ -370,6 +371,7 @@ __meta__ = {
 modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
 margin_right = 80.0
 margin_bottom = 80.0
+rect_scale = Vector2( 0.33, 0.33 )
 texture = ExtResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
