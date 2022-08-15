@@ -5,6 +5,12 @@ func _ready():
 	$Pointer.add_point(Vector2(75, 125))
 	$Pointer.add_point(Vector2(75, 125))
 
+var i := 0
+func _process(delta):
+	i += 1
+	if i % 10 == 1:
+		update_arrow()
+
 func get_value(arrow_idx: int):
 	var x = incoming_lines[0].get_value() if incoming_lines.has(0) else 0
 	var y = incoming_lines[1].get_value() if incoming_lines.has(1) else 0

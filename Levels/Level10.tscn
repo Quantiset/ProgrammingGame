@@ -33,3 +33,17 @@ margin_top = -320.0
 margin_right = 161.0
 margin_bottom = -306.0
 text = "Rotate this vector 90 degrees 3 times"
+
+[node name="Pos1" type="Label" parent="." index="13"]
+margin_left = 80.0
+margin_top = -198.0
+margin_right = 120.0
+margin_bottom = -184.0
+text = "(1, -3)"
+
+[node name="Pos2" type="Label" parent="." index="14"]
+margin_left = -240.0
+margin_top = -38.0
+margin_right = -200.0
+margin_bottom = -24.0
+text = "(-3, -1)"

@@ -172,7 +172,6 @@ margin_left = -240.0
 margin_top = -80.0
 margin_right = -240.0
 margin_bottom = -80.0
-set_value = 99.0
 
 [node name="Start" parent="." index="9" instance=ExtResource( 9 )]
 margin_left = -640.0

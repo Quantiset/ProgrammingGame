@@ -27,13 +27,11 @@ texture = ExtResource( 4 )
 offset = Vector2( -69, 0 )
 
 [node name="Label" type="Label" parent="." index="11"]
-margin_left = 80.0
+margin_left = 160.0
 margin_top = -80.0
-margin_right = 201.0
+margin_right = 285.0
 margin_bottom = -66.0
-text = "Generate a cardioid
-
-r = 1-cos(theta)"
+text = "Generate a cardioid"
 
 [node name="Block" parent="." index="12" instance=ExtResource( 5 )]
 modulate = Color( 1, 0.0509804, 0.0509804, 0.360784 )

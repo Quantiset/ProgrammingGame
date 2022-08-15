@@ -23,4 +23,4 @@ func _process(delta):
 
 
 func _on_NextLevel_activated():
-	pass # Replace with function body.
+	set_level_complete(14)

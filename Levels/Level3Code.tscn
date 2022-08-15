@@ -225,12 +225,10 @@ margin_bottom = 240.0
 [node name="Constant" parent="." index="9" instance=ExtResource( 4 )]
 margin_top = 320.0
 margin_bottom = 320.0
-set_value = 99.0
 
 [node name="Constant2" parent="." index="10" instance=ExtResource( 4 )]
 margin_top = 560.0
 margin_bottom = 560.0
-set_value = 99.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." index="11"]
 modulate = Color( 1, 1, 1, 0.427451 )

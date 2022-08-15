@@ -84,6 +84,8 @@ margin_right = 482.0
 margin_bottom = -306.0
 text = "A circle with a length of 5"
 
+[connection signal="activated" from="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code/NextLevel" to="." method="_on_NextLevel_activated"]
+
 [editable path="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level14Code"]
 [editable path="X"]
 [editable path="Y"]
