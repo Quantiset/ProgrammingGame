@@ -34,7 +34,7 @@ line = NodePath("../../../../../../../Blue")
 [node name="PositionSet" parent="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level17Code" index="7"]
 line = NodePath("../../../../../../../Red")
 
-[node name="Line2D" type="Line2D" parent="." index="10"]
+[node name="White" type="Line2D" parent="." index="10"]
 points = PoolVector2Array( 160, -240, 202, -51 )
 width = 5.0
 default_color = Color( 1, 1, 1, 1 )
@@ -62,6 +62,7 @@ texture_progress = ExtResource( 6 )
 fill_mode = 4
 
 [node name="Red" parent="." index="12" instance=ExtResource( 1 )]
+visible = false
 modulate = Color( 1, 0.0431373, 0.0431373, 1 )
 position = Vector2( -1, 0 )
 points = PoolVector2Array( 0, 0, 160, -240 )
@@ -102,7 +103,62 @@ margin_bottom = 14.0
 [node name="Pointer" parent="." index="16" instance=ExtResource( 3 )]
 position = Vector2( 202, -52 )
 
+[node name="Triangle1" type="Line2D" parent="." index="17"]
+self_modulate = Color( 1, 1, 1, 0.647059 )
+position = Vector2( -300, -160 )
+points = PoolVector2Array( 160, -240, 202, -51 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Label2" type="Label" parent="Triangle1" index="0"]
+margin_left = 197.0
+margin_top = -141.0
+margin_right = 248.0
+margin_bottom = -127.0
+text = "Asin(@)"
+
+[node name="Triangle2" parent="." index="18" instance=ExtResource( 1 )]
+self_modulate = Color( 1, 1, 1, 0.647059 )
+position = Vector2( -300, -160 )
+points = PoolVector2Array( 0, 0, 205, -51 )
+width = 5.0
+
+[node name="Head" parent="Triangle2" index="0"]
+visible = false
+position = Vector2( 317, -80 )
+rotation = -0.332627
+scale = Vector2( 2, 2 )
+
+[node name="Label2" type="Label" parent="Triangle2" index="1"]
+margin_left = 109.0
+margin_top = -21.0
+margin_right = 149.0
+margin_bottom = -7.0
+text = "Acos(@)"
+
+[node name="Triangle3" parent="." index="19" instance=ExtResource( 1 )]
+modulate = Color( 0.305882, 0.956863, 0.972549, 1 )
+self_modulate = Color( 1, 1, 1, 0.647059 )
+position = Vector2( -300, -160 )
+points = PoolVector2Array( 0, 0, 160, -240 )
+width = 5.0
+
+[node name="Label" type="Label" parent="Triangle3" index="0"]
+margin_left = 45.0
+margin_top = -117.0
+margin_right = 85.0
+margin_bottom = -103.0
+text = "A"
+
+[node name="Head" parent="Triangle3" index="1"]
+visible = false
+position = Vector2( 160, -240 )
+rotation = -0.961293
+scale = Vector2( 2, 2 )
+
 [editable path="CanvasLayer/HSplitContainer/MarginContainer/ViewportContainer/Viewport/Level17Code"]
 [editable path="Green"]
 [editable path="Red"]
 [editable path="Blue"]
+[editable path="Triangle2"]
+[editable path="Triangle3"]

@@ -20,3 +20,7 @@ func _process(delta):
 	$X.add_point(Vector2(mouse_pos.x,0))
 	$Y.position.x = mouse_pos.x
 	$Y.add_point(Vector2(0,mouse_pos.y))
+
+
+func _on_NextLevel_activated():
+	pass # Replace with function body.

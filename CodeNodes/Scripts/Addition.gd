@@ -26,5 +26,5 @@ func set_method(val: int):
 			$Label.text = "Addition"
 			help_info = "Adds two numbers together. Ex: 3 | 3 => 6"
 		Types.Subtraction:
-			$Label.text = "Subtraction"
+			$Label.text = "Subtract"
 			help_info = "Subtracts two numbers. Ex: 5 | 3 => 2"

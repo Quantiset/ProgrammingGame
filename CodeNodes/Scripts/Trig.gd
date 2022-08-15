@@ -14,11 +14,13 @@ func set_type(val: int):
 	match val:
 		Types.Sin:
 			$Label.text = "Sin"
-			help_info = "Returns a [color=yellow]number[/color] between 0 and 1 and smoothly cycles as input [color=yellow]number[/color] increases"
+			help_info = "Returns the sine of an input. Cycles between -1 and 1"
 		Types.Cos:
 			$Label.text = "Cos"
+			help_info = "Returns the cosine of an input. Cycles between -1 and 1"
 		Types.Tan:
 			$Label.text = "Tan"
+			help_info = "Returns the tangent of an input"
 
 func get_value(arrow_idx: int):
 	if arrow_idx == 0 and incoming_lines.has(0):

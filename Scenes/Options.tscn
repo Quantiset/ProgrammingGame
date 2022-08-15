@@ -239,6 +239,7 @@ margin_top = 88.0
 margin_right = 598.0
 margin_bottom = 128.0
 custom_fonts/font = SubResource( 8 )
+pressed = true
 text = "Fullscreen"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/HBoxContainer"]

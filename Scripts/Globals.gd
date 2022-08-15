@@ -89,12 +89,12 @@ var levels := {
 	},
 	15: {
 		"name": "XV - Normalizing Progress",
-		"color": Color(0.933594, 0.81906, 0.200577),
+		"color": Color(0.941406, 0.136063, 0.136063),
 		"location": preload("res://Levels/Level15.tscn")
 	},
 	16: {
 		"name": "XVI - Counterproductive Reasoning",
-		"color": Color(1, 1, 1),
+		"color": Color(0.941406, 0.136063, 0.136063),
 		"location": preload("res://Levels/Level16.tscn")
 	},
 	17: {

@@ -5,11 +5,10 @@ enum Type {
 	Line,
 	Mouse
 }
-export (Type) var type = Type.Block
+export (Type) var type = Type.Block setget set_type
 export (NodePath) onready var line = line setget set_line
 
 func _ready():
-	help_info = "Returns a [color=green]Vector2[/color] of the selected object's position"
 	set_line(line)
 	yield(get_tree().create_timer(0.1), "timeout")
 
@@ -40,3 +39,13 @@ func set_line(val):
 	if line:
 		$Sprite.modulate = line.modulate 
 		$Label.text = line.name
+
+func set_type(val):
+	type = val
+	match type:
+		Type.Block:
+			help_info = "Returns a [color=green]Vector2[/color] of the selected block's position"
+		Type.Line:
+			help_info = "Returns a [color=green]Vector2[/color] of the selected vector's point"
+		Type.Mouse:
+			help_info = "Returns a [color=green]Vector2[/color] of the mouse position"

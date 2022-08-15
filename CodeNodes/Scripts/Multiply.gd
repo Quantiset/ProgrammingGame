@@ -1,5 +1,8 @@
 extends CodeNode
 
+func _ready():
+	help_info = "Multiplies two [color=yellow]numbers[/color] together. Ex: 4 | 4 => 16"
+
 func get_value(arrow_idx: int):
 	if arrow_idx == 0:
 		return (

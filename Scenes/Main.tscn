@@ -385,9 +385,9 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MenuButton"]
 modulate = Color( 0.392157, 0.854902, 0.352941, 1 )
-margin_right = 40.0
-margin_bottom = 40.0
-rect_scale = Vector2( 0.42, 0.42 )
+margin_right = 254.0
+margin_bottom = 240.0
+rect_scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
 [node name="HelpButton" type="Button" parent="CanvasLayer"]
